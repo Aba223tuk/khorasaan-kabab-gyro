@@ -119,14 +119,21 @@ document.addEventListener('DOMContentLoaded', () => {
         closeNav();
       }
 
-      setTimeout(() => {
+      const doScroll = () => {
         const headerHeight = header.offsetHeight;
         const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
         window.scrollTo({
           top: targetPosition,
           behavior: 'smooth'
         });
-      }, wasOpen ? 350 : 0);
+      };
+
+      if (wasOpen) {
+        // Wait for menu close transition + scroll-lock restore, then scroll
+        setTimeout(doScroll, 400);
+      } else {
+        requestAnimationFrame(doScroll);
+      }
     });
   });
 

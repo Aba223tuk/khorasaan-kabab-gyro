@@ -170,7 +170,7 @@ ul, ol {
 }
 
 .site-header.nav-open {
-  background: rgba(10, 10, 10, 1);
+  background: #000000;
 }
 
 .header-inner {
@@ -1416,7 +1416,7 @@ ul, ol {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.96);
+  background: #000000;
   z-index: 998;
   opacity: 0;
   visibility: hidden;
@@ -1437,7 +1437,7 @@ ul, ol {
     right: 0;
     bottom: 0;
     left: 0;
-    background: #0a0a0a;
+    background: #000000;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;

@@ -158,17 +158,11 @@ ul, ol {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(10, 10, 10, 0.92);
-  backdrop-filter: blur(12px);
+  background: #000000;
   border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-  transition: background var(--transition), box-shadow var(--transition);
 }
 
-.site-header.scrolled {
-  background: rgba(10, 10, 10, 0.98);
-  box-shadow: var(--shadow-md);
-}
-
+.site-header.scrolled,
 .site-header.nav-open {
   background: #000000;
 }
@@ -209,6 +203,7 @@ ul, ol {
   display: flex;
   align-items: center;
   gap: 2rem;
+  background: #000000;
 }
 
 .nav-link {
@@ -217,6 +212,7 @@ ul, ol {
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--cream-muted);
+  background: #000000;
   position: relative;
   transition: color var(--transition);
 }
@@ -1428,6 +1424,7 @@ ul, ol {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  background: #000000;
 }
 
 @media (max-width: 768px) {
@@ -1455,6 +1452,17 @@ ul, ol {
 
   .main-nav.open {
     transform: translateX(0);
+    background: #000000;
+  }
+
+  .main-nav.open .nav-link {
+    background: #000000;
+  }
+
+  .main-nav.open .nav-cta {
+    background: #000000;
+    color: var(--gold);
+    border: 1px solid var(--gold);
   }
 
   .nav-link {
@@ -1466,7 +1474,7 @@ ul, ol {
     align-items: center;
     justify-content: center;
     border-radius: 4px;
-    background: transparent;
+    background: #000000;
     transition: background 0.2s ease, color 0.2s ease;
   }
 
@@ -1485,6 +1493,9 @@ ul, ol {
     margin-top: 1rem;
     padding: 1rem 1.5rem;
     text-align: center;
+    background: #000000;
+    color: var(--gold);
+    border: 1px solid var(--gold);
   }
 
   .hamburger {

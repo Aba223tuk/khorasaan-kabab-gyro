@@ -5,12 +5,17 @@ A single-page, mobile-first restaurant website for **Khorasaan Kabab & Gyro**, a
 ## Features
 
 - **Afghan-themed design** with a green, black, and gold color palette
-- **Clean background photography** on hero, menu, popular, reviews, gallery, contact, and footer sections
-- **Smooth scroll animations** and hover effects
-- **Mobile-optimized** hamburger navigation
-- **Interactive menu** with expandable/collapsible categories and filtering
+- **Mobile-first responsive layout** with a polished hamburger drawer and prominent "Call to Order" CTA
+- **Smooth scroll** with `scroll-padding-top` so anchor nav links land below the fixed header
+- **Interactive menu** with expandable/collapsible categories and category filtering
 - **Reviews**, gallery, hours, location, and contact sections
 - No build step required &#8212; open directly in a browser
+
+## Live Site
+
+The site is published via **GitHub Pages** at:
+
+- https://aba223tuk.github.io/khorasaan-kabab-gyro/
 
 ## Files
 
@@ -43,22 +48,14 @@ python -m http.server 8000
 
 ## Images
 
-The site uses curated Unsplash photos as placeholder background images:
+The site ships with no external photo assets &#8212; every visual is built from CSS gradients, colors, and inline SVG (an Afghan-arch motif in the About section). The site is fully self-contained, with no third-party image requests, so it loads fast and works offline.
 
-- Hero: grilled meat/kebab
-- About: Afghan spices
-- Menu: food spread
-- Popular: family dining + chicken and lamb food shots
-- Reviews: cozy restaurant ambiance
-- Gallery: restaurant ambiance, kababs, rice, gyros, family dining, ingredients
-- Contact: restaurant interior
-- Footer: spice market
-
-To use your own photos, replace the `url('https://images.unsplash.com/...')` values in `styles.css` with paths to local images, e.g. `url('images/hero.jpg')`.
+To add real photography, drop `<img>` tags inside the `.card-img` divs in `index.html` or replace the placeholder text in the gallery items.
 
 ## Notes
 
 - Menu reflects the full Khorasaan Kabab & Gyro menu. Prices should still be verified in case they change.
 - Menu card images use subtle Afghan geometric patterns. Replace them with real dish photos by editing the `.card-img` styles or swapping in `<img>` tags.
 - Hours are estimated based on the listing; verify and update them as needed.
+- The mobile nav uses a right-side drawer with a gold "Call to Order" CTA. Tapping any in-page link closes the drawer and smooth-scrolls to the section, offset to clear the 72px fixed header.
 

@@ -54,7 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'Escape' && mainNav.classList.contains('open')) closeMenu();
     });
 
-    // Close whenever a nav link (or the Call to Order button) is tapped
+    // Close whenever a nav link (or the Call to Order button) is tapped.
+    // For in-page anchors (Home/About/Menu/Reviews/Contact) we let the browser
+    // handle the scroll via :target after the drawer is out of the way.
     navLinks.forEach((link) => link.addEventListener('click', closeMenu));
 
     // Reset state if the viewport grows back past the mobile breakpoint

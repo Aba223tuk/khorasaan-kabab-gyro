@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isOpen = nav.classList.toggle('open');
     hamburger.classList.toggle('active', isOpen);
     hamburger.setAttribute('aria-expanded', isOpen);
+    header.classList.toggle('nav-open', isOpen);
     if (navOverlay) navOverlay.classList.toggle('visible', isOpen);
     document.body.style.overflow = isOpen ? 'hidden' : '';
   }
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.classList.remove('open');
     hamburger.classList.remove('active');
     hamburger.setAttribute('aria-expanded', 'false');
+    header.classList.remove('nav-open');
     if (navOverlay) navOverlay.classList.remove('visible');
     document.body.style.overflow = '';
   }

@@ -28,13 +28,37 @@ document.addEventListener('DOMContentLoaded', () => {
   handleScroll();
 
   // --- Mobile navigation ---
+  let scrollY = 0;
+
+  function lockScroll() {
+    scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function unlockScroll() {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, scrollY);
+  }
+
   function toggleNav() {
     const isOpen = nav.classList.toggle('open');
     hamburger.classList.toggle('active', isOpen);
     hamburger.setAttribute('aria-expanded', isOpen);
     header.classList.toggle('nav-open', isOpen);
     if (navOverlay) navOverlay.classList.toggle('visible', isOpen);
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    if (isOpen) {
+      lockScroll();
+    } else {
+      unlockScroll();
+    }
   }
 
   function closeNav() {
@@ -43,10 +67,15 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburger.setAttribute('aria-expanded', 'false');
     header.classList.remove('nav-open');
     if (navOverlay) navOverlay.classList.remove('visible');
-    document.body.style.overflow = '';
+    unlockScroll();
   }
 
   hamburger.addEventListener('click', toggleNav);
+
+  const navClose = document.getElementById('navClose');
+  if (navClose) {
+    navClose.addEventListener('click', closeNav);
+  }
 
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -56,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Close mobile nav when clicking the overlay or outside nav
+  // Close mobile nav when tapping the overlay or outside the panel
   if (navOverlay) {
     navOverlay.addEventListener('click', closeNav);
   }

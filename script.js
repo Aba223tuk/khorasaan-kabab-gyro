@@ -45,7 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.left = '';
     document.body.style.right = '';
     document.body.style.overflow = '';
-    window.scrollTo(0, scrollY);
+    if (scrollY >= 0) {
+      window.scrollTo(0, scrollY);
+    }
   }
 
   function toggleNav() {
@@ -77,13 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
     navClose.addEventListener('click', closeNav);
   }
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (nav.classList.contains('open')) {
-        closeNav();
-      }
-    });
-  });
 
   // Close mobile nav when tapping the overlay or outside the panel
   if (navOverlay) {
@@ -107,23 +102,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- Smooth scroll with header offset ---
+
+  // --- Smooth scroll + close mobile nav on anchor click ---
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
       if (targetId === '#') return;
 
       const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
+      if (!target) return;
+
+      e.preventDefault();
+      const wasOpen = nav.classList.contains('open');
+
+      if (wasOpen) {
+        closeNav();
+      }
+
+      setTimeout(() => {
         const headerHeight = header.offsetHeight;
         const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
-
         window.scrollTo({
           top: targetPosition,
           behavior: 'smooth'
         });
-      }
+      }, wasOpen ? 350 : 0);
     });
   });
 

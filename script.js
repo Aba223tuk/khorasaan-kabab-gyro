@@ -45,8 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.left = '';
     document.body.style.right = '';
     document.body.style.overflow = '';
-    if (scrollY >= 0) {
-      window.scrollTo(0, scrollY);
+    const savedY = scrollY;
+    scrollY = -1;
+    if (savedY >= 0) {
+      window.scrollTo(0, savedY);
     }
   }
 
@@ -63,13 +65,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function closeNav() {
+
+  function closeNav(skipScrollRestore = false) {
     nav.classList.remove('open');
     hamburger.classList.remove('active');
     hamburger.setAttribute('aria-expanded', 'false');
     header.classList.remove('nav-open');
     if (navOverlay) navOverlay.classList.remove('visible');
-    unlockScroll();
+    if (skipScrollRestore) {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflow = '';
+      scrollY = -1;
+    } else {
+      unlockScroll();
+    }
   }
 
   hamburger.addEventListener('click', toggleNav);
@@ -116,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const wasOpen = nav.classList.contains('open');
 
       if (wasOpen) {
-        closeNav();
+        closeNav(true);
       }
 
       const doScroll = () => {

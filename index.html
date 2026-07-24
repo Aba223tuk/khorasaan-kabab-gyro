@@ -1,959 +1,2352 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Khorasaan Kabab & Gyro - Authentic Afghan halal restaurant in Brooklyn, NY. Kababs, gyros, rice platters, and more.">
-  <title>Khorasaan Kabab & Gyro | Afghan Halal Restaurant in Brooklyn</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Inter:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <noscript>
-    <style>
-      .reveal,
-      .reveal-up {
-        opacity: 1 !important;
-        transform: none !important;
-        animation: none !important;
-      }
-    </style>
-  </noscript>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Khorasaan Kabab & Gyro — Authentic Afghan & Mediterranean cuisine in Brooklyn. Halal, fresh, hand-crafted daily.">
+<title>Khorasaan Kabab & Gyro — Brooklyn's Finest Afghan & Mediterranean</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,500&family=Inter:wght@300;400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root{
+  --orange:#FF6B1A;
+  --orange-dark:#D14800;
+  --orange-light:#FF8C42;
+  --saffron:#FFB627;
+  --saffron-dark:#E89B0F;
+  --green:#007A36;
+  --green-dark:#005C28;
+  --green-light:#3DA75B;
+  --black:#1A0F08;
+  --white:#FFFFFF;
+  --beige:#F5E9D4;
+  --beige-light:#FBF4E3;
+  --beige-dark:#E8D5B0;
+  --brown:#5C3A1E;
+  --brown-dark:#3D2613;
+  --brown-light:#8B5A2B;
+  --tan:#D4A574;
+  --ink:#1A0F08;
+  --ink-soft:#3D2613;
+  --ink-muted:#5C4A3A;
+  --muted:#8B7355;
+  --border:rgba(92,58,30,0.18);
+  --border-light:rgba(212,165,116,0.3);
+  --shadow:0 15px 50px rgba(61,38,19,0.15);
+  --shadow-lg:0 25px 80px rgba(26,15,8,0.25);
+  --shadow-sm:0 4px 15px rgba(61,38,19,0.08);
+  --display:'Bebas Neue', sans-serif;
+  --serif:'Playfair Display', serif;
+  --sans:'Inter', sans-serif;
+  --arabic:'Noto Naskh Arabic', serif;
+}
+html{ scroll-behavior:smooth; }
+body{
+  font-family:var(--sans);
+  font-weight:400;
+  color:var(--ink-soft);
+  background:var(--beige-light);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; border:none; background:none; }
+::selection{ background:var(--orange); color:var(--white); }
+.ar{ font-family:var(--arabic); direction:rtl; }
+
+/* ============ PRELOADER ============ */
+.preloader{
+  position:fixed; inset:0; z-index:9999;
+  background:var(--brown-dark);
+  display:flex; align-items:center; justify-content:center; flex-direction:column;
+  transition:opacity .6s ease, visibility .6s ease;
+}
+.preloader.hidden{ opacity:0; visibility:hidden; pointer-events:none; }
+.preloader-logo{
+  font-family:var(--display);
+  font-size:clamp(3rem, 12vw, 6rem);
+  color:var(--orange);
+  letter-spacing:.08em;
+  animation:bounce 1s ease-in-out infinite;
+}
+.preloader-sub{
+  font-family:var(--arabic);
+  font-size:1.3rem;
+  color:var(--beige);
+  margin-top:1rem;
+  letter-spacing:.1em;
+  direction:rtl;
+}
+.preloader-tagline{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:.9rem;
+  color:var(--saffron);
+  margin-top:.5rem;
+  letter-spacing:.15em;
+}
+@keyframes bounce{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-15px)} }
+.preloader-bar{
+  width:220px; height:3px; background:rgba(245,233,212,0.15);
+  margin-top:2rem; position:relative; overflow:hidden;
+  border-radius:2px;
+}
+.preloader-bar::after{
+  content:""; position:absolute; top:0; left:-100%; width:100%; height:100%;
+  background:linear-gradient(90deg, var(--orange), var(--saffron), var(--green-light));
+  animation:loading 1.2s ease-in-out infinite;
+}
+@keyframes loading{ 0%{left:-100%} 100%{left:100%} }
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:1.2rem 2rem;
+  display:flex; align-items:center; justify-content:space-between;
+  transition:all .4s ease;
+  background:rgba(251,244,227,0.95);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  padding:.8rem 2rem;
+  background:var(--beige-light);
+  border-bottom-color:var(--border);
+  box-shadow:0 2px 30px rgba(92,58,30,0.1);
+}
+.nav-logo{
+  font-family:var(--display);
+  font-size:1.5rem;
+  color:var(--brown-dark);
+  letter-spacing:.06em;
+  display:flex; align-items:center; gap:.7rem;
+  z-index:110;
+}
+.nav-logo .mark{
+  width:46px; height:46px;
+  background:var(--brown);
+  border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--saffron);
+  font-family:var(--arabic);
+  font-size:1.4rem;
+  font-weight:700;
+  position:relative;
+  box-shadow:0 5px 20px rgba(92,58,30,0.4);
+  overflow:hidden;
+}
+.nav-logo .mark::before{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(45deg, transparent 48%, var(--saffron) 48%, var(--saffron) 52%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, var(--orange) 48%, var(--orange) 52%, transparent 52%);
+  opacity:.35;
+}
+.nav-logo .mark span{ position:relative; z-index:1; }
+
+.nav-links{
+  display:flex; gap:2rem; align-items:center;
+  list-style:none;
+}
+.nav-links a{
+  font-family:var(--sans);
+  font-size:.85rem; font-weight:600;
+  letter-spacing:.05em;
+  color:var(--ink-soft);
+  padding:.5rem 0;
+  position:relative;
+  transition:color .3s ease;
+}
+.nav-links a::after{
+  content:""; position:absolute; bottom:0; left:0;
+  width:0; height:2px; background:var(--orange);
+  transition:width .3s ease;
+}
+.nav-links a:hover{ color:var(--orange); }
+.nav-links a:hover::after{ width:100%; }
+
+.nav-cta{
+  font-family:var(--sans);
+  font-size:.8rem; font-weight:700;
+  letter-spacing:.05em;
+  padding:.85rem 1.6rem;
+  background:var(--orange);
+  color:var(--white);
+  border-radius:50px;
+  display:flex; align-items:center; gap:.5rem;
+  box-shadow:0 8px 25px rgba(255,107,26,0.4);
+  transition:all .3s ease;
+}
+.nav-cta:hover{ background:var(--orange-dark); transform:translateY(-2px); box-shadow:0 12px 30px rgba(255,107,26,0.55); }
+
+/* ============ BURGER ============ */
+.burger{
+  display:none;
+  width:30px; height:22px;
+  position:relative; z-index:110;
+  cursor:pointer;
+}
+.burger span{
+  position:absolute; left:0; right:0; height:2px;
+  background:var(--brown-dark);
+  border-radius:2px;
+  transition:all .4s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.burger span:nth-child(1){ top:0; }
+.burger span:nth-child(2){ top:50%; transform:translateY(-50%); width:80%; }
+.burger span:nth-child(3){ bottom:0; }
+.burger.active span:nth-child(1){
+  top:50%; transform:translateY(-50%) rotate(45deg);
+  background:var(--orange);
+}
+.burger.active span:nth-child(2){ opacity:0; transform:translateY(-50%) scaleX(0); }
+.burger.active span:nth-child(3){
+  bottom:50%; transform:translateY(50%) rotate(-45deg);
+  background:var(--orange);
+}
+
+/* ============ MOBILE MENU ============ */
+.mobile-menu{
+  position:fixed; inset:0; z-index:99;
+  background:var(--brown-dark);
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column;
+  clip-path:circle(0% at calc(100% - 40px) 40px);
+  transition:clip-path .7s cubic-bezier(.77,0,.18,1);
+}
+.mobile-menu.active{ clip-path:circle(150% at calc(100% - 40px) 40px); }
+.mobile-menu::before{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(135deg, transparent 48%, rgba(255,182,39,0.12) 48%, rgba(255,182,39,0.12) 52%, transparent 52%),
+    linear-gradient(45deg, transparent 48%, rgba(255,107,26,0.12) 48%, rgba(255,107,26,0.12) 52%, transparent 52%);
+  background-size:60px 60px;
+  pointer-events:none;
+  opacity:.5;
+}
+.mobile-menu ul{
+  list-style:none; text-align:center;
+  display:flex; flex-direction:column; gap:1.5rem;
+  position:relative; z-index:2;
+}
+.mobile-menu li{
+  opacity:0; transform:translateY(30px);
+  transition:all .5s ease;
+}
+.mobile-menu.active li{ opacity:1; transform:translateY(0); }
+.mobile-menu.active li:nth-child(1){ transition-delay:.2s; }
+.mobile-menu.active li:nth-child(2){ transition-delay:.3s; }
+.mobile-menu.active li:nth-child(3){ transition-delay:.4s; }
+.mobile-menu.active li:nth-child(4){ transition-delay:.5s; }
+.mobile-menu.active li:nth-child(5){ transition-delay:.6s; }
+.mobile-menu.active li:nth-child(6){ transition-delay:.7s; }
+.mobile-menu a{
+  font-family:var(--display);
+  font-size:2rem; font-weight:400;
+  color:var(--beige);
+  letter-spacing:.1em;
+  transition:color .3s ease;
+}
+.mobile-menu a:hover{ color:var(--saffron); }
+.mobile-menu .mobile-cta{
+  margin-top:2rem;
+  padding:1.1rem 2.5rem;
+  background:var(--orange);
+  color:var(--white);
+  border-radius:50px;
+  font-weight:700; letter-spacing:.05em;
+  opacity:0; transform:translateY(30px);
+  transition:all .5s ease .8s;
+  position:relative; z-index:2;
+}
+.mobile-menu.active .mobile-cta{ opacity:1; transform:translateY(0); }
+.mobile-menu .ar-ornament{
+  position:absolute; bottom:3rem;
+  font-family:var(--arabic);
+  color:var(--saffron);
+  font-size:1.2rem;
+  opacity:.5;
+  letter-spacing:.1em;
+}
+
+/* ============ HERO ============ */
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  background:linear-gradient(135deg, var(--beige-light) 0%, var(--beige) 50%, var(--beige-dark) 100%);
+  padding-top:80px;
+}
+.hero-pattern{
+  position:absolute; inset:0; opacity:.1; pointer-events:none;
+  background-image:
+    radial-gradient(circle at 50% 50%, var(--brown) 1.5px, transparent 2px),
+    radial-gradient(circle at 0% 50%, var(--orange) 1.5px, transparent 2px),
+    radial-gradient(circle at 100% 50%, var(--orange) 1.5px, transparent 2px);
+  background-size:40px 40px;
+  background-position:0 0, 20px 0, 20px 0;
+}
+.hero::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:6px;
+  background:linear-gradient(90deg, 
+    var(--black) 0%, var(--black) 33%, 
+    var(--orange) 33%, var(--orange) 66%, 
+    var(--green) 66%, var(--green) 100%);
+  z-index:2;
+}
+
+.hero-decoration{
+  position:absolute; inset:0; pointer-events:none; overflow:hidden;
+}
+.hero-deco{
+  position:absolute; border-radius:50%;
+  border:2px dashed var(--orange);
+  opacity:.2;
+  animation:float 12s ease-in-out infinite;
+}
+.hero-deco-1{
+  width:500px; height:500px;
+  top:-150px; right:-150px;
+  animation-delay:0s;
+}
+.hero-deco-2{
+  width:350px; height:350px;
+  bottom:10%; left:-100px;
+  animation-delay:3s;
+  border-color:var(--brown);
+  border-style:dotted;
+}
+.hero-deco-3{
+  width:200px; height:200px;
+  top:25%; right:15%;
+  animation-delay:6s;
+  border-color:var(--saffron);
+}
+@keyframes float{ 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(-30px) rotate(180deg)} }
+
+.hero-content{
+  position:relative; z-index:2;
+  max-width:1300px; width:100%;
+  padding:2rem;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:4rem;
+  align-items:center;
+}
+.hero-text{ animation:fadeInUp 1s ease .3s both; }
+.hero-badge{
+  display:inline-flex; align-items:center; gap:.5rem;
+  background:var(--green);
+  border:2px solid var(--green-dark);
+  padding:.6rem 1.1rem;
+  border-radius:50px;
+  font-size:.75rem; font-weight:700;
+  color:var(--white);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-bottom:1.5rem;
+  animation:fadeInUp 1s ease .5s both;
+  box-shadow:0 5px 20px rgba(0,122,54,0.3);
+}
+.hero-badge .pulse-dot{
+  width:8px; height:8px;
+  background:var(--saffron);
+  border-radius:50%;
+  animation:pulse-dot 1.5s ease-in-out infinite;
+}
+@keyframes pulse-dot{ 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.5);opacity:.5} }
+
+.hero-title{
+  font-family:var(--display);
+  font-size:clamp(3.5rem, 9vw, 7.5rem);
+  font-weight:400;
+  color:var(--brown-dark);
+  line-height:.85;
+  letter-spacing:.02em;
+  margin-bottom:.5rem;
+  animation:fadeInUp 1s ease .7s both;
+}
+.hero-title .highlight{
+  color:var(--orange);
+  position:relative;
+  display:inline-block;
+}
+.hero-title .highlight::after{
+  content:""; position:absolute;
+  bottom:.1em; left:0; right:0;
+  height:.15em;
+  background:var(--saffron);
+  opacity:.5;
+  z-index:-1;
+  transform:skewX(-5deg);
+}
+.hero-title-ar{
+  font-family:var(--arabic);
+  font-size:clamp(1.4rem, 2.8vw, 2rem);
+  color:var(--brown-dark);
+  margin-bottom:1.5rem;
+  font-weight:600;
+  animation:fadeInUp 1s ease .9s both;
+  display:inline-block;
+  background:var(--beige);
+  padding:.4rem 1rem;
+  border-radius:8px;
+  border:1px solid var(--border);
+}
+.hero-desc{
+  font-size:1.1rem;
+  color:var(--ink-soft);
+  max-width:520px;
+  margin-bottom:1.5rem;
+  line-height:1.7;
+  animation:fadeInUp 1s ease 1.1s both;
+}
+.hero-quote{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:1rem;
+  color:var(--brown-dark);
+  border-left:4px solid var(--orange);
+  padding:1rem 1rem 1rem 1.2rem;
+  margin-bottom:2rem;
+  animation:fadeInUp 1s ease 1.2s both;
+  background:rgba(255,255,255,0.5);
+  border-radius:0 12px 12px 0;
+}
+.hero-quote .ar{
+  font-style:normal;
+  font-weight:600;
+  display:block;
+  margin-bottom:.3rem;
+  color:var(--orange-dark);
+}
+
+.hero-rating{
+  display:flex; align-items:center; gap:1rem;
+  margin-bottom:2rem;
+  padding:1.2rem;
+  background:var(--white);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  border:2px solid var(--beige);
+  animation:fadeInUp 1s ease 1.3s both;
+  max-width:420px;
+}
+.hero-stars{ color:var(--saffron); font-size:1.2rem; letter-spacing:.05em; }
+.hero-rating-text{ font-family:var(--display); font-size:1.8rem; color:var(--brown-dark); line-height:1; }
+.hero-rating-sub{ color:var(--ink-muted); font-size:.8rem; }
+.hero-rating-divider{ width:1px; height:30px; background:var(--border); }
+.hero-rating-badges{ display:flex; flex-direction:column; gap:.2rem; font-size:.7rem; font-weight:600; color:var(--green-dark); }
+
+.hero-cta-group{
+  display:flex; gap:1rem; flex-wrap:wrap;
+  margin-bottom:2.5rem;
+  animation:fadeInUp 1s ease 1.4s both;
+}
+.btn{
+  font-family:var(--sans);
+  font-size:.95rem; font-weight:700;
+  letter-spacing:.03em;
+  padding:1.1rem 2rem;
+  border-radius:50px;
+  transition:all .3s ease;
+  display:inline-flex; align-items:center; gap:.5rem;
+  cursor:pointer;
+  border:2px solid transparent;
+}
+.btn-primary{
+  background:var(--orange);
+  color:var(--white);
+  box-shadow:0 10px 30px rgba(255,107,26,0.4);
+}
+.btn-primary:hover{
+  background:var(--orange-dark);
+  transform:translateY(-3px);
+  box-shadow:0 15px 40px rgba(255,107,26,0.55);
+}
+.btn-brown{
+  background:var(--brown);
+  color:var(--beige);
+  box-shadow:0 10px 30px rgba(92,58,30,0.35);
+}
+.btn-brown:hover{
+  background:var(--brown-dark);
+  transform:translateY(-3px);
+  box-shadow:0 15px 40px rgba(92,58,30,0.5);
+}
+
+.hero-features{
+  display:flex; gap:1rem; flex-wrap:wrap;
+  animation:fadeInUp 1s ease 1.5s both;
+}
+.hero-feature{
+  display:flex; align-items:center; gap:.5rem;
+  font-size:.85rem; font-weight:600;
+  color:var(--ink-soft);
+  background:var(--white);
+  padding:.5rem .9rem;
+  border-radius:50px;
+  border:1px solid var(--border);
+}
+.hero-feature .check{
+  width:24px; height:24px;
+  background:var(--green);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--white);
+  font-size:.8rem; font-weight:900;
+}
+
+.hero-visual{
+  position:relative;
+  height:620px;
+  animation:fadeIn 1.5s ease .5s both;
+}
+.hero-card{
+  position:absolute;
+  background:var(--white);
+  border-radius:24px;
+  box-shadow:var(--shadow-lg);
+  overflow:hidden;
+  transition:all .5s cubic-bezier(.2,.7,.2,1);
+  border:2px solid var(--beige);
+}
+.hero-card:hover{ transform:translateY(-10px) rotate(-1deg); box-shadow:0 35px 90px rgba(61,38,19,0.35); }
+
+/* HERO MAIN CARD - now uses real mix grill photo */
+.hero-card-main{
+  top:0; right:0; left:0;
+  height:380px;
+  background-image: url('images/mix-grill.jpg');
+  background-size: cover;
+  background-position: center;
+  display:flex; align-items:flex-end; justify-content:center;
+  flex-direction:column;
+  color:var(--white);
+  text-align:right;
+  padding:2rem;
+  position:relative;
+  border-color:var(--orange);
+}
+.hero-card-main::before{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, transparent 0%, transparent 40%, rgba(26,15,8,0.85) 100%);
+}
+.hero-card-main .hero-card-content{ position:relative; z-index:2; width:100%; }
+.hero-card-main .emoji{ display:none; }
+.hero-card-main h3{
+  font-family:var(--display);
+  font-size:2.2rem;
+  letter-spacing:.05em;
+  position:relative;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  margin-bottom: .3rem;
+}
+.hero-card-main .ar{
+  position:relative; font-size:1.2rem; opacity:.95; color:var(--saffron);
+  font-weight:600;
+  display:block;
+}
+.hero-card-main p{
+  font-family:var(--serif);
+  font-size:1rem;
+  font-style:italic;
+  opacity:.95;
+  margin-top:.5rem;
+  position:relative;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero-card-mini{
+  width:200px; height:200px;
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column;
+  color:var(--white);
+  text-align:center;
+  padding:1.5rem;
+  font-family:var(--display);
+  font-size:2rem;
+  letter-spacing:.05em;
+}
+.hero-card-mini-2{
+  bottom:0; right:0;
+  background:var(--ink);
+  border-color:var(--ink);
+  font-size:1.3rem;
+  color:var(--beige);
+}
+.hero-card-mini-2 .price{ font-size:2.5rem; color:var(--saffron); font-family:var(--display); }
+.hero-card-mini-2 .label{ font-family:var(--sans); font-size:.7rem; font-weight:600; opacity:.7; margin-top:.3rem; letter-spacing:.1em; }
+
+.hero-floating{
+  position:absolute;
+  background:var(--white);
+  border-radius:50px;
+  padding:.7rem 1.1rem;
+  box-shadow:var(--shadow);
+  display:flex; align-items:center; gap:.5rem;
+  font-size:.8rem; font-weight:700;
+  color:var(--ink-soft);
+  animation:bobble 4s ease-in-out infinite;
+  z-index:3;
+  border:2px solid var(--beige);
+}
+@keyframes bobble{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+.hero-float-1{ top:30%; left:-30px; animation-delay:0s; }
+.hero-float-2{ bottom:30%; right:-30px; animation-delay:2s; }
+.hero-float-3{ top:5%; right:30%; animation-delay:1s; background:var(--saffron); color:var(--brown-dark); border-color:var(--saffron); }
+.hero-float .icon{ font-size:1.1rem; }
+.hero-float .new{ color:var(--orange); font-size:.7rem; }
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeInUp{ from{opacity:0; transform:translateY(40px)} to{opacity:1; transform:translateY(0)} }
+@keyframes fadeIn{ from{opacity:0} to{opacity:1} }
+@keyframes scaleIn{ from{opacity:0; transform:scale(0.9)} to{opacity:1; transform:scale(1)} }
+.reveal{ opacity:0; transform:translateY(50px); transition:all 1s cubic-bezier(.2,.7,.2,1); }
+.reveal.visible{ opacity:1; transform:translateY(0); }
+.reveal-left{ opacity:0; transform:translateX(-50px); transition:all 1s cubic-bezier(.2,.7,.2,1); }
+.reveal-left.visible{ opacity:1; transform:translateX(0); }
+.reveal-right{ opacity:0; transform:translateX(50px); transition:all 1s cubic-bezier(.2,.7,.2,1); }
+.reveal-right.visible{ opacity:1; transform:translateX(0); }
+.reveal-delay-1{ transition-delay:.1s; }
+.reveal-delay-2{ transition-delay:.2s; }
+.reveal-delay-3{ transition-delay:.3s; }
+.reveal-delay-4{ transition-delay:.4s; }
+
+/* ============ SECTIONS ============ */
+section{ padding:6rem 2rem; position:relative; }
+.container{ max-width:1300px; margin:0 auto; }
+.section-tag{
+  font-family:var(--sans);
+  font-size:.75rem; font-weight:700;
+  letter-spacing:.3em; text-transform:uppercase;
+  color:var(--orange);
+  margin-bottom:1rem;
+  display:inline-flex; align-items:center; gap:.7rem;
+  background:var(--beige);
+  padding:.5rem 1rem;
+  border-radius:50px;
+  border:1px solid var(--border);
+}
+.section-tag::before{
+  content:"✦"; color:var(--green);
+}
+.section-title{
+  font-family:var(--display);
+  font-size:clamp(2.5rem, 6vw, 4.5rem);
+  font-weight:400;
+  color:var(--brown-dark);
+  line-height:1;
+  letter-spacing:.02em;
+  margin-bottom:1rem;
+}
+.section-title .highlight{ color:var(--orange); }
+.section-ar{
+  font-family:var(--arabic);
+  font-size:1.4rem;
+  color:var(--brown-dark);
+  margin-bottom:1.5rem;
+  display:inline-block;
+  font-weight:600;
+  background:var(--beige);
+  padding:.3rem 1rem;
+  border-radius:8px;
+  direction:rtl;
+  border:1px solid var(--border);
+}
+.section-desc{
+  font-size:1.1rem;
+  color:var(--ink-soft);
+  max-width:600px;
+  line-height:1.7;
+  margin-bottom:3rem;
+}
+
+/* ============ WELCOME STRIP ============ */
+.welcome-strip{
+  background:var(--brown);
+  color:var(--beige);
+  padding:1.2rem 2rem;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  font-family:var(--sans);
+  font-size:.9rem;
+  font-weight:500;
+  letter-spacing:.1em;
+  border-top:2px solid var(--saffron);
+  border-bottom:2px solid var(--saffron);
+}
+.welcome-strip::before{
+  content:""; position:absolute; inset:0;
+  background:
+    repeating-linear-gradient(45deg, transparent 0, transparent 20px, rgba(255,182,39,0.08) 20px, rgba(255,182,39,0.08) 21px);
+}
+.welcome-strip .ar{ font-size:1.1rem; font-weight:600; color:var(--saffron); }
+.welcome-strip .stars{ color:var(--saffron); }
+
+/* ============ STOREFRONT HERO STRIP ============ */
+.storefront-strip{
+  position:relative;
+  height: 50vh;
+  min-height: 400px;
+  max-height: 600px;
+  overflow:hidden;
+  background-image: url('images/storefront.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.storefront-strip::before{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(26,15,8,0.4) 0%, rgba(26,15,8,0.7) 100%);
+}
+.storefront-strip-content{
+  position:relative; z-index:2;
+  color: var(--white);
+  padding: 2rem;
+}
+.storefront-strip-content .halal-badge{
+  display:inline-block;
+  background: var(--green);
+  color: var(--white);
+  padding: .5rem 1.2rem;
+  border-radius: 50px;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  margin-bottom: 1.5rem;
+  border: 2px solid #fff;
+}
+.storefront-strip-content h2{
+  font-family: var(--display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: .05em;
+  margin-bottom: .5rem;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+.storefront-strip-content .ar{
+  font-size: 1.5rem;
+  color: var(--saffron);
+  display:block;
+  margin-bottom: 1rem;
+}
+.storefront-strip-content p{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+.storefront-strip-content .phone{
+  font-family: var(--display);
+  font-size: 2rem;
+  color: var(--saffron);
+  letter-spacing: .05em;
+}
+
+/* ============ ABOUT ============ */
+.about{
+  background:var(--white);
+  position:relative;
+  overflow:hidden;
+}
+.about::before{
+  content:""; position:absolute;
+  top:10%; left:-5%;
+  width:400px; height:400px;
+  background:radial-gradient(circle, rgba(255,107,26,0.06), transparent 70%);
+  border-radius:50%;
+}
+.about-grid{
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:5rem; align-items:center;
+  position:relative;
+}
+.about-visual{
+  position:relative; height:600px;
+}
+/* Real photos for about */
+.about-img{
+  position:absolute;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  background-size: cover;
+  background-position: center;
+  transition:all .5s ease;
+  border:3px solid var(--beige);
+}
+.about-img:hover{ transform:scale(1.02) rotate(-1deg); }
+.about-img-1{
+  top:0; left:0; width:65%; height:60%;
+  background-image: url('images/lamb-rice.jpg');
+}
+.about-img-2{
+  bottom:0; right:0; width:55%; height:55%;
+  background-image: url('images/chicken-rice.jpg');
+}
+.about-img-3{
+  top:38%; right:5%; width:30%; height:35%;
+  background: var(--saffron);
+  color: var(--brown-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  z-index:2;
+  border: 4px solid var(--white);
+  font-family: var(--arabic);
+  font-weight:700;
+  box-shadow: var(--shadow-lg);
+}
+
+.about-text h2{ margin-bottom:1rem; }
+.about-text p{
+  font-size:1.05rem;
+  line-height:1.8;
+  color:var(--ink-soft);
+  margin-bottom:1.2rem;
+}
+.about-text p .ar{
+  color:var(--orange-dark);
+  font-weight:600;
+}
+.about-stats{
+  display:grid; grid-template-columns:repeat(3, 1fr);
+  gap:2rem; margin-top:2.5rem;
+  padding-top:2.5rem;
+  border-top:2px solid var(--beige);
+}
+.about-stat .num{
+  font-family:var(--display);
+  font-size:3rem; color:var(--orange);
+  line-height:1;
+}
+.about-stat .num.brown{ color:var(--brown); }
+.about-stat .num.green{ color:var(--green); }
+.about-stat .label{
+  font-size:.85rem; font-weight:600;
+  color:var(--ink-muted);
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  margin-top:.5rem;
+}
+
+/* ============ MENU - INTERACTIVE ============ */
+.menu{ background:var(--beige-light); position:relative; padding:7rem 2rem 8rem; }
+.menu::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg, transparent, var(--orange) 30%, var(--saffron) 50%, var(--green) 70%, transparent);
+}
+.menu-header{ text-align:center; margin-bottom:3rem; position:relative; }
+.menu-header .section-tag{ justify-content:center; }
+.menu-header .section-desc{ margin:1.5rem auto 0; }
+
+/* Menu Search & Filter Bar */
+.menu-controls{
+  display:flex; gap:1rem; align-items:center;
+  max-width:800px; margin:0 auto 2rem;
+  flex-wrap:wrap; justify-content:center;
+}
+.menu-search{
+  position:relative; flex:1; min-width:260px;
+}
+.menu-search input{
+  width:100%;
+  padding:1rem 1.2rem 1rem 3rem;
+  background:var(--white);
+  border:2px solid var(--beige);
+  border-radius:50px;
+  font-family:var(--sans);
+  font-size:.95rem;
+  color:var(--ink-soft);
+  outline:none;
+  transition:all .3s ease;
+  box-shadow:var(--shadow-sm);
+}
+.menu-search input:focus{
+  border-color:var(--orange);
+  box-shadow:0 0 0 4px rgba(255,107,26,0.1);
+}
+.menu-search input::placeholder{ color:var(--muted); }
+.menu-search .search-icon{
+  position:absolute; left:1.1rem; top:50%;
+  transform:translateY(-50%);
+  color:var(--orange);
+  font-size:1.1rem;
+  pointer-events:none;
+}
+.menu-search .clear-btn{
+  position:absolute; right:.7rem; top:50%;
+  transform:translateY(-50%);
+  width:28px; height:28px;
+  background:var(--beige);
+  border-radius:50%;
+  display:none; align-items:center; justify-content:center;
+  color:var(--brown);
+  font-size:.8rem; font-weight:900;
+  cursor:pointer;
+  transition:all .3s ease;
+}
+.menu-search .clear-btn:hover{ background:var(--orange); color:var(--white); }
+.menu-search.has-value .clear-btn{ display:flex; }
+
+.menu-filter-toggle{
+  display:flex; align-items:center; gap:.5rem;
+  padding:.9rem 1.4rem;
+  background:var(--white);
+  border:2px solid var(--beige);
+  border-radius:50px;
+  font-family:var(--sans);
+  font-size:.85rem; font-weight:600;
+  color:var(--ink-soft);
+  cursor:pointer;
+  transition:all .3s ease;
+  box-shadow:var(--shadow-sm);
+}
+.menu-filter-toggle:hover{ border-color:var(--orange); color:var(--orange); }
+.menu-filter-toggle.active{ background:var(--brown); color:var(--beige); border-color:var(--brown); }
+
+/* Filter Pills */
+.menu-filters{
+  display:none;
+  flex-wrap:wrap; gap:.5rem; justify-content:center;
+  margin-bottom:1.5rem;
+  padding:1rem 1.5rem;
+  background:var(--white);
+  border:2px solid var(--beige);
+  border-radius:20px;
+  box-shadow:var(--shadow-sm);
+  animation:fadeIn .3s ease;
+}
+.menu-filters.active{ display:flex; }
+.filter-pill{
+  font-family:var(--sans);
+  font-size:.75rem; font-weight:700;
+  letter-spacing:.05em;
+  padding:.5rem 1rem;
+  background:var(--beige-light);
+  border:1px solid var(--beige);
+  border-radius:50px;
+  color:var(--ink-soft);
+  cursor:pointer;
+  transition:all .3s ease;
+  display:flex; align-items:center; gap:.3rem;
+}
+.filter-pill:hover{ border-color:var(--orange); color:var(--orange); }
+.filter-pill.active{
+  background:var(--orange);
+  color:var(--white);
+  border-color:var(--orange);
+}
+
+.menu-tabs{
+  display:flex; gap:.6rem; justify-content:center;
+  flex-wrap:wrap; margin-bottom:2.5rem;
+}
+.menu-tab{
+  font-family:var(--sans);
+  font-size:.85rem; font-weight:700;
+  letter-spacing:.03em;
+  color:var(--ink-soft);
+  padding:.8rem 1.5rem;
+  background:var(--white);
+  border:2px solid var(--beige);
+  border-radius:50px;
+  transition:all .3s ease;
+  display:flex; align-items:center; gap:.5rem;
+  box-shadow:0 2px 10px rgba(92,58,30,0.05);
+}
+.menu-tab .icon{ font-size:1.1rem; }
+.menu-tab .count{
+  font-size:.7rem; font-weight:600;
+  background:var(--beige);
+  padding:.1rem .5rem;
+  border-radius:50px;
+  color:var(--brown);
+}
+.menu-tab:hover{ border-color:var(--orange); color:var(--orange); transform:translateY(-2px); }
+.menu-tab.active{
+  background:var(--brown);
+  color:var(--beige);
+  border-color:var(--brown);
+  box-shadow:0 8px 25px rgba(92,58,30,0.3);
+}
+.menu-tab.active .icon{ filter:brightness(0) invert(1); }
+.menu-tab.active .count{ background:var(--saffron); color:var(--brown-dark); }
+
+.menu-category{ display:none; }
+.menu-category.active{ display:block; animation:fadeIn .5s ease; }
+.menu-empty{
+  text-align:center; padding:4rem 2rem;
+  color:var(--ink-muted);
+  font-style:italic;
+  background:var(--white);
+  border:2px dashed var(--beige-dark);
+  border-radius:20px;
+  font-size:1.1rem;
+}
+.menu-empty .emoji{ font-size:3rem; display:block; margin-bottom:1rem; }
+
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1.5rem;
+}
+.menu-card{
+  background:var(--white);
+  border:2px solid var(--beige);
+  border-radius:20px;
+  padding:0;
+  transition:all .4s cubic-bezier(.2,.7,.2,1);
+  position:relative;
+  overflow:hidden;
+  opacity:0; transform:translateY(20px);
+  cursor:pointer;
+  display:flex; flex-direction:column;
+}
+.menu-card.visible{ opacity:1; transform:translateY(0); }
+.menu-card:hover{
+  border-color:var(--orange);
+  transform:translateY(-8px);
+  box-shadow:0 25px 60px rgba(92,58,30,0.2);
+  background:var(--beige-light);
+}
+.menu-card::before{
+  content:""; position:absolute;
+  top:0; left:0; right:0; height:5px;
+  background:linear-gradient(90deg, var(--orange) 0%, var(--saffron) 50%, var(--green) 100%);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .4s ease;
+  z-index:2;
+}
+.menu-card:hover::before{ transform:scaleX(1); }
+
+/* Menu card image area - removed for text-only list */
+
+.menu-card-body{
+  padding:1.5rem;
+  display:flex; flex-direction:column;
+  flex:1;
+}
+.menu-card-header{
+  display:flex; justify-content:space-between; align-items:start;
+  gap:1rem; margin-bottom:.8rem;
+}
+.menu-card-name{
+  font-family:var(--serif);
+  font-size:1.2rem; font-weight:700;
+  color:var(--brown-dark);
+  line-height:1.2;
+  flex:1;
+}
+.menu-card-name .ar{
+  display:block;
+  font-family:var(--arabic);
+  font-size:1rem; font-weight:600;
+  color:var(--orange-dark);
+  margin-top:.2rem;
+  direction:rtl;
+}
+.menu-card-price{
+  font-family:var(--display);
+  font-size:1.3rem; color:var(--orange);
+  white-space:nowrap;
+  letter-spacing:.02em;
+  background:var(--beige);
+  padding:.3rem .7rem;
+  border-radius:8px;
+  border:1px solid var(--beige-dark);
+}
+.menu-card-price .old{
+  font-size:.9rem;
+  color:var(--muted);
+  text-decoration:line-through;
+  margin-right:.3rem;
+}
+.combo-tag{
+  font-size:.7rem;
+  background:var(--beige);
+  color:var(--brown-dark);
+  padding:.1rem .4rem;
+  border-radius:4px;
+  margin-left:.2rem;
+  font-weight:700;
+  letter-spacing:.05em;
+}
+.menu-card-desc{
+  font-size:.9rem;
+  color:var(--ink-soft);
+  line-height:1.5;
+  margin-bottom:1rem;
+  flex:1;
+}
+.menu-card-tags{
+  display:flex; flex-wrap:wrap; gap:.4rem;
+  margin-bottom:1rem;
+}
+.menu-tag-pill{
+  font-size:.7rem; font-weight:700;
+  letter-spacing:.05em;
+  padding:.25rem .7rem;
+  border-radius:50px;
+  background:var(--beige);
+  color:var(--orange-dark);
+  text-transform:uppercase;
+  border:1px solid var(--beige-dark);
+}
+.menu-tag-pill.halal{ background:var(--green); color:var(--white); border-color:var(--green); }
+.menu-tag-pill.spicy{ background:var(--orange); color:var(--white); border-color:var(--orange); }
+.menu-tag-pill.popular{ background:var(--saffron); color:var(--brown-dark); border-color:var(--saffron); }
+.menu-tag-pill.signature{ background:var(--brown); color:var(--saffron); border-color:var(--brown); }
+.menu-tag-pill.veg{ background:var(--green-light); color:var(--white); border-color:var(--green-light); }
+.menu-tag-pill.meal{ background:var(--orange-light); color:var(--white); border-color:var(--orange-light); }
+.menu-tag-pill.family{ background:var(--brown); color:var(--beige); border-color:var(--brown); }
+.menu-tag-pill.kids{ background:var(--tan); color:var(--brown-dark); border-color:var(--tan); }
+
+/* ============ CART TOAST ============ */
+
+
+
+
+
+
+
+
+
+/* ============ GALLERY (REAL PHOTOS) ============ */
+.gallery{
+  background:var(--brown-dark);
+  color:var(--beige);
+  position:relative; overflow:hidden;
+}
+.gallery::before{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,107,26,0.15), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,182,39,0.12), transparent 40%);
+}
+.gallery::after{
+  content:""; position:absolute; inset:0;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(255,182,39,0.08) 1px, transparent 2px);
+  background-size:30px 30px;
+  opacity:.4;
+}
+.gallery .section-title{ color:var(--beige); }
+.gallery .section-ar{ color:var(--saffron); background:rgba(255,182,39,0.1); border-color:var(--saffron); }
+.gallery .section-tag{ color:var(--saffron); background:rgba(255,182,39,0.1); border-color:var(--saffron); }
+.gallery .section-tag::before{ color:var(--orange); }
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  grid-template-rows:repeat(2, 260px);
+  gap:1rem;
+  margin-top:3rem;
+  position:relative; z-index:1;
+}
+.gallery-item{
+  position:relative; overflow:hidden;
+  border-radius:20px;
+  cursor:pointer;
+  display:block;
+  color:var(--white);
+  transition:all .5s ease;
+  border:2px solid var(--brown);
+  background-size: cover;
+  background-position: center;
+  text-align: right;
+}
+.gallery-item::before{ display:none; }
+.gallery-item:hover{ transform:scale(.98); border-color:var(--saffron); }
+.gallery-item-1{ background-image: url('images/mix-grill.jpg'); }
+.gallery-item-2{ background-image: url('images/qabeli-palow.jpg'); }
+.gallery-item-3{ background-image: url('images/chicken-rice.jpg'); }
+.gallery-item-4{ background-image: url('images/lamb-rice.jpg'); }
+.gallery-item-5{ display:none; }
+.gallery-item-6{ display:none; }
+
+
+
+/* ============ INTERIOR SECTION ============ */
+.interior{
+  background: var(--white);
+  position: relative;
+}
+.interior-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+  position: relative;
+}
+.interior-photo{
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  height: 450px;
+  background-size: cover;
+  background-position: center;
+  border: 3px solid var(--beige);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: flex-end;
+  transition: all .5s ease;
+}
+.interior-photo:hover{ transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.interior-photo::before{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, transparent 50%, rgba(26,15,8,0.85) 100%);
+}
+.interior-photo-1{ background-image: url('images/interior-dining.jpg'); }
+.interior-photo-2{ background-image: url('images/interior-counter.jpg'); }
+.interior-photo .label{
+  position: relative;
+  z-index: 2;
+  color: var(--white);
+  font-family: var(--display);
+  font-size: 1.5rem;
+  padding: 1.5rem 2rem;
+  width: 100%;
+  text-align: right;
+}
+.interior-photo .label .ar{
+  display: block;
+  font-family: var(--arabic);
+  color: var(--saffron);
+  font-size: 1rem;
+  margin-top: .3rem;
+}
+
+/* ============ REVIEWS ============ */
+.reviews{ background:var(--beige); position:relative; }
+.reviews::before{
+  content:""; position:absolute;
+  top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg, transparent, var(--brown) 30%, var(--orange) 70%, transparent);
+}
+.reviews-header{ text-align:center; margin-bottom:4rem; }
+.reviews-header .section-tag{ justify-content:center; }
+.reviews-header .section-desc{ margin:1.5rem auto 0; }
+
+.reviews-summary{
+  max-width:600px; margin:0 auto 3rem;
+  background:var(--white);
+  border-radius:24px;
+  padding:2.5rem 2rem;
+  text-align:center;
+  box-shadow:var(--shadow);
+  border:3px solid var(--orange);
+  position:relative;
+}
+.reviews-summary::before{
+  content:"★"; position:absolute;
+  top:-25px; left:50%; transform:translateX(-50%);
+  width:50px; height:50px;
+  background:var(--saffron);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.5rem; color:var(--brown-dark);
+  box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+.reviews-rating{
+  font-family:var(--display);
+  font-size:5rem; color:var(--orange);
+  line-height:1;
+}
+.reviews-stars{ color:var(--saffron); font-size:1.3rem; margin:.5rem 0; letter-spacing:.1em; }
+.reviews-count{ color:var(--ink-soft); font-weight:600; }
+
+.reviews-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1.5rem;
+}
+.review-card{
+  background:var(--white);
+  border-radius:20px;
+  padding:2rem;
+  border:2px solid var(--beige-dark);
+  transition:all .4s ease;
+  position:relative;
+}
+.review-card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow);
+  border-color:var(--orange);
+}
+.review-card::before{
+  content:"\201C";
+  position:absolute;
+  top:-10px; left:20px;
+  font-family:var(--serif);
+  font-size:4rem;
+  color:var(--orange);
+  line-height:1;
+  background:var(--white);
+  padding:0 .5rem;
+  font-weight:900;
+}
+.review-stars{ color:var(--saffron); font-size:.9rem; margin-bottom:1rem; letter-spacing:.05em; }
+.review-text{
+  font-family:var(--serif);
+  font-size:1.05rem;
+  line-height:1.6;
+  color:var(--ink-soft);
+  margin-bottom:1.5rem;
+  font-style:italic;
+}
+.review-author{
+  display:flex; align-items:center; gap:1rem;
+  padding-top:1rem;
+  border-top:1px solid var(--beige);
+}
+.review-avatar{
+  width:48px; height:48px;
+  border-radius:50%;
+  background:linear-gradient(135deg, var(--orange), var(--brown));
+  color:var(--white);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700;
+  font-size:1.1rem;
+  font-family:var(--display);
+}
+.review-name{
+  font-weight:700; color:var(--brown-dark);
+  font-size:.95rem;
+}
+.review-meta{
+  font-size:.8rem; color:var(--ink-muted);
+  display:flex; align-items:center; gap:.5rem; margin-top:.2rem;
+}
+.review-badge{
+  font-size:.65rem; padding:.1rem .5rem;
+  background:var(--green);
+  color:var(--white);
+  border-radius:50px;
+  font-weight:700;
+}
+
+/* ============ CATERING SECTION ============ */
+.catering{
+  background: linear-gradient(135deg, var(--ink) 0%, var(--brown-dark) 100%);
+  color: var(--beige);
+  position: relative;
+  overflow: hidden;
+}
+.catering::before{
+  content:""; position:absolute; inset:0;
+  background-image: url('images/mix-grill.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: .15;
+}
+.catering::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(135deg, rgba(26,15,8,0.85), rgba(61,38,19,0.85));
+}
+.catering .container{ position: relative; z-index: 2; }
+.catering .section-title{ color: var(--beige); }
+.catering .section-ar{ color: var(--saffron); background: rgba(255,182,39,0.15); border-color: var(--saffron); }
+.catering .section-tag{ color: var(--saffron); background: rgba(255,182,39,0.15); border-color: var(--saffron); }
+.catering .section-tag::before{ color: var(--orange); }
+.catering .section-desc{ color: rgba(245,233,212,0.85); }
+
+.catering-features{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.catering-feature{
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(245,233,212,0.08);
+  border: 2px solid rgba(255,182,39,0.3);
+  border-radius: 16px;
+  transition: all .3s ease;
+}
+.catering-feature:hover{
+  background: rgba(255,182,39,0.15);
+  border-color: var(--saffron);
+  transform: translateY(-5px);
+}
+.catering-feature .icon{
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+.catering-feature h4{
+  font-family: var(--display);
+  font-size: 1.1rem;
+  letter-spacing: .05em;
+  color: var(--saffron);
+  margin-bottom: .5rem;
+}
+.catering-feature p{
+  font-size: .85rem;
+  color: rgba(245,233,212,0.7);
+  line-height: 1.5;
+}
+
+/* ============ INFO / VISIT ============ */
+.info{
+  background:var(--brown);
+  color:var(--beige);
+  position:relative; overflow:hidden;
+}
+.info::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:6px;
+  background:linear-gradient(90deg, 
+    var(--black) 0%, var(--black) 33%, 
+    var(--orange) 33%, var(--orange) 66%, 
+    var(--green) 66%, var(--green) 100%);
+}
+.info::after{
+  content:""; position:absolute; inset:0;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M0 50 Q25 30 50 50 T100 50' fill='none' stroke='%23FFB627' stroke-width='0.5' opacity='0.12'/><path d='M0 60 Q25 40 50 60 T100 60' fill='none' stroke='%23FFB627' stroke-width='0.5' opacity='0.12'/><path d='M0 70 Q25 50 50 70 T100 70' fill='none' stroke='%23FFB627' stroke-width='0.5' opacity='0.12'/></svg>");
+  background-size:300px;
+  pointer-events:none;
+}
+.info .section-title{ color:var(--beige); }
+.info .section-ar{ color:var(--saffron); background:rgba(255,182,39,0.15); border-color:var(--saffron); }
+.info .section-tag{ color:var(--saffron); background:rgba(255,182,39,0.15); border-color:var(--saffron); }
+.info .section-tag::before{ color:var(--orange); }
+
+.info-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:2rem;
+  margin-top:3rem;
+  position:relative;
+}
+.info-card{
+  background:var(--beige-light);
+  border:3px solid var(--saffron);
+  border-radius:24px;
+  padding:2.5rem 2rem;
+  text-align:center;
+  transition:all .4s ease;
+  color:var(--ink-soft);
+}
+.info-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.3);
+  background:var(--white);
+}
+.info-card .icon{
+  width:72px; height:72px;
+  background:var(--brown);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--saffron);
+  font-size:2rem;
+  margin:0 auto 1.5rem;
+  box-shadow:0 10px 30px rgba(92,58,30,0.3);
+}
+.info-card h3{
+  font-family:var(--display);
+  font-size:1.6rem;
+  letter-spacing:.05em;
+  margin-bottom:.5rem;
+  color:var(--brown-dark);
+}
+.info-card p{ font-size:.95rem; color:var(--ink-soft); line-height:1.6; margin-bottom:.3rem; font-weight:500; }
+.info-card a{
+  color:var(--orange-dark);
+  font-weight:700;
+  border-bottom:2px solid var(--orange);
+  padding-bottom:2px;
+  display:inline-block;
+  margin-top:.5rem;
+}
+.info-card a:hover{ color:var(--brown); border-color:var(--brown); }
+
+.info-actions{
+  display:flex; gap:1rem; justify-content:center;
+  flex-wrap:wrap; margin-top:3rem;
+  position:relative;
+}
+.btn-saffron{
+  background:var(--saffron);
+  color:var(--brown-dark);
+  font-family:var(--sans);
+  font-size:.95rem; font-weight:700;
+  padding:1.1rem 2rem;
+  border-radius:50px;
+  display:inline-flex; align-items:center; gap:.5rem;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  transition:all .3s ease;
+  border:2px solid var(--saffron);
+}
+.btn-saffron:hover{ transform:translateY(-3px); box-shadow:0 15px 40px rgba(0,0,0,0.3); background:var(--beige); border-color:var(--beige); }
+.btn-outline-cream{
+  background:transparent;
+  color:var(--beige);
+  border:2px solid var(--beige);
+  font-family:var(--sans);
+  font-size:.95rem; font-weight:700;
+  padding:1.1rem 2rem;
+  border-radius:50px;
+  display:inline-flex; align-items:center; gap:.5rem;
+  transition:all .3s ease;
+}
+.btn-outline-cream:hover{ background:var(--beige); color:var(--brown-dark); transform:translateY(-3px); }
+
+/* ============ FOOTER ============ */
+footer{
+  background:var(--ink);
+  color:var(--beige);
+  padding:4rem 2rem 1.5rem;
+  position:relative;
+}
+footer::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:6px;
+  background:linear-gradient(90deg, 
+    var(--black) 0%, var(--black) 33%, 
+    var(--orange) 33%, var(--orange) 66%, 
+    var(--green) 66%, var(--green) 100%);
+}
+.footer-grid{
+  display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:3rem; max-width:1300px; margin:0 auto;
+}
+.footer-brand .nav-logo{ color:var(--beige); margin-bottom:1rem; }
+.footer-brand .nav-logo .mark{ box-shadow:0 5px 20px rgba(92,58,30,0.5); }
+.footer-brand p{
+  font-size:1rem; line-height:1.7;
+  color:rgba(245,233,212,0.8);
+  max-width:320px;
+  margin-bottom:1rem;
+}
+.footer-brand .ar{
+  color:var(--saffron);
+  font-size:1.1rem;
+  margin-top:.5rem;
+  display:block;
+  font-weight:600;
+}
+.footer-col h4{
+  font-family:var(--display);
+  font-size:1.1rem;
+  letter-spacing:.05em;
+  color:var(--saffron);
+  margin-bottom:1.2rem;
+}
+.footer-col ul{ list-style:none; }
+.footer-col li{ margin-bottom:.7rem; }
+.footer-col a{
+  color:rgba(245,233,212,0.8);
+  font-size:.95rem;
+  transition:all .3s ease;
+  display:inline-flex; align-items:center; gap:.5rem;
+}
+.footer-col a:hover{ color:var(--orange); transform:translateX(3px); }
+.footer-bottom{
+  max-width:1300px; margin:3rem auto 0;
+  padding-top:1.5rem;
+  border-top:1px solid rgba(245,233,212,0.15);
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:1rem;
+  font-size:.85rem; color:rgba(245,233,212,0.6);
+}
+.footer-social{ display:flex; gap:.8rem; }
+.footer-social a{
+  width:40px; height:40px;
+  background:rgba(245,233,212,0.1);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--beige);
+  transition:all .3s ease;
+}
+.footer-social a:hover{ background:var(--orange); transform:translateY(-3px); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 968px){
+  .nav-links, .nav-cta{ display:none; }
+  .burger{ display:block; }
+  .hero-content{ grid-template-columns:1fr; gap:2rem; text-align:center; }
+  .hero-text{ order:1; }
+  .hero-visual{ order:2; height:450px; }
+  .hero-desc{ margin-left:auto; margin-right:auto; }
+  .hero-rating{ margin-left:auto; margin-right:auto; }
+  .hero-cta-group{ justify-content:center; }
+  .hero-features{ justify-content:center; }
+  .hero-float-1, .hero-float-2, .hero-float-3{ display:none; }
+  .storefront-strip{ background-attachment: scroll; height: 50vh; }
+  .about-grid{ grid-template-columns:1fr; gap:3rem; }
+  .about-visual{ height:450px; }
+  .menu-grid{ grid-template-columns:repeat(2, 1fr); }
+  .gallery-grid{ grid-template-columns:repeat(2, 1fr); grid-template-rows:repeat(2, 220px); }
+  .reviews-grid{ grid-template-columns:1fr; }
+  .info-grid{ grid-template-columns:1fr; }
+  .interior-grid{ grid-template-columns:1fr; }
+  .catering-features{ grid-template-columns: repeat(2, 1fr); }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+  section{ padding:4rem 1.5rem; }
+  
+}
+@media (max-width: 568px){
+  .hero-title{ font-size:3rem; }
+  .nav-logo{ font-size:1.2rem; }
+  .nav-logo .mark{ width:36px; height:36px; font-size:1.1rem; }
+  .about-visual{ height:400px; }
+  .menu-grid{ grid-template-columns:1fr; }
+  .gallery-grid{ grid-template-columns:1fr; grid-template-rows:repeat(4, 220px); }
+  .gallery-item:nth-child(1), .gallery-item:nth-child(4){ grid-column:span 1; }
+  .footer-grid{ grid-template-columns:1fr; }
+  .footer-bottom{ flex-direction:column; text-align:center; }
+  .menu-tabs{ gap:.4rem; }
+  .menu-tab{ font-size:.75rem; padding:.6rem 1rem; }
+  .about-stats{ grid-template-columns:repeat(3, 1fr); gap:1rem; }
+  .about-stat .num{ font-size:2rem; }
+  .interior-photo{ height: 300px; }
+  .catering-features{ grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="site-header" id="header">
-    <div class="container header-inner">
-      <a href="#home" class="logo">
-        <span class="logo-icon" aria-hidden="true">&#x2666;</span>
-        <span class="logo-text">Khorasaan</span>
-      </a>
-      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
-        <button class="nav-close" id="navClose" aria-label="Close menu" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <a href="#home" class="nav-link">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#menu" class="nav-link">Menu</a>
-        <a href="#reviews" class="nav-link">Reviews</a>
-        <a href="#contact" class="nav-link">Contact</a>
-        <a href="tel:+13473127777" class="btn btn-gold nav-cta">Call to Order</a>
-      </nav>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mainNav">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader">
+  <div class="preloader-logo">KHORASAAN</div>
+  <div class="preloader-sub">خوراسان کباب و جایرو</div>
+  <div class="preloader-tagline">Brooklyn, New York</div>
+  <div class="preloader-bar"></div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <a href="#home" class="nav-logo">
+    <div class="mark"><span>خ</span></div>
+    KHORASAAN
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#catering">Catering</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#info">Visit</a></li>
+  </ul>
+  <a href="tel:3473127777" class="nav-cta">Order Now</a>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#catering">Catering</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#info">Visit</a></li>
+  </ul>
+  <a href="tel:3473127777" class="mobile-cta">Order Now 🛵</a>
+  <div class="ar-ornament">خوراسان کباب و جایرو</div>
+</div>
+
+<!-- ============ WELCOME STRIP ============ -->
+<div class="welcome-strip">
+  <span class="ar">خوش آمدید</span> — Welcome to Khorasaan — 
+  <span class="stars">★★★★★</span> 
+  4.6/5 (458 Reviews) — 
+  <span class="ar">صد در صد حلال</span> 100% Halal
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-decoration">
+    <div class="hero-deco hero-deco-1"></div>
+    <div class="hero-deco hero-deco-2"></div>
+    <div class="hero-deco hero-deco-3"></div>
+  </div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        Now Open — Order Online
+      </div>
+      <h1 class="hero-title">
+        KHORASAAN<br>
+        <span class="highlight">KABAB & GYRO</span>
+      </h1>
+      <div class="hero-title-ar">خوراسان کباب و جایرو</div>
+      <p class="hero-desc">Authentic Afghan & Mediterranean flavors, hand-crafted daily in the heart of Brooklyn. <strong>100% halal</strong>, fresh, and full of soul — the way it should be.</p>
+      <div class="hero-quote">
+        <span class="ar">خوش آمدید — خوراک خوب، استقبال گرم</span>
+        "Good food, warm welcome" — a Brooklyn tradition.
+      </div>
+      <div class="hero-rating">
+        <div class="hero-rating-text">4.6</div>
+        <div class="hero-rating-divider"></div>
+        <div>
+          <div class="hero-stars">★★★★★</div>
+          <div class="hero-rating-sub">458 Google reviews</div>
+        </div>
+        <div class="hero-rating-divider"></div>
+        <div class="hero-rating-badges">
+          <span>✓ 100% Halal</span>
+          <span>✓ LGBTQ+ Friendly</span>
+        </div>
+      </div>
+      <div class="hero-cta-group">
+        <a href="#menu" class="btn btn-primary">View Menu →</a>
+        <a href="tel:3473127777" class="btn btn-brown">📞 Call to Order</a>
+      </div>
+      <div class="hero-features">
+        <div class="hero-feature"><span class="check">✓</span> Dine-in</div>
+        <div class="hero-feature"><span class="check">✓</span> Curbside Pickup</div>
+        <div class="hero-feature"><span class="check">✓</span> No-Contact Delivery</div>
+        <div class="hero-feature"><span class="check">✓</span> Catering</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card hero-card-main"></div>
+      <div class="hero-card hero-card-mini hero-card-mini-2">
+        <div class="price">$21.99</div>
+        <div class="label">PLATTERS</div>
+      </div>
+      <div class="hero-floating hero-float-1">
+        <span class="icon">🔥</span>
+        <span>Best Seller</span>
+      </div>
+      <div class="hero-floating hero-float-2">
+        <span class="icon">⚡</span>
+        <span>15 min pickup</span>
+      </div>
+      <div class="hero-floating hero-float-3">
+        <span class="icon">🎉</span>
+        <span class="new">Catering Available!</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STOREFRONT STRIP ============ -->
+<section class="storefront-strip">
+  <div class="storefront-strip-content">
+    <span class="halal-badge">✓ 100% HALAL</span>
+    <h2>VISIT US IN BENSONHURST</h2>
+    <span class="ar">به ما در بنسون هرست سر بزنید</span>
+    <p>1947 Bath Avenue, Brooklyn — Authentic Afghan & Mediterranean cuisine</p>
+    <a href="tel:3473127777" class="phone">347-312-7777</a>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal-left">
+        <div class="about-img about-img-1"></div>
+        <div class="about-img about-img-2"></div>
+        <div class="about-img about-img-3">ع</div>
+      </div>
+      <div class="about-text reveal-right">
+        <span class="section-tag">Our Story</span>
+        <h2 class="section-title">A TASTE OF <span class="highlight">KHORASAAN</span></h2>
+        <div class="section-ar">طعم خوراسان — سرزمین کهن</div>
+        <p><span class="ar">خوش آمدید</span> Khorasaan Kabab & Gyro brings the rich, fragrant flavors of Afghanistan to Brooklyn. Named after the historic region that gave birth to poetry, trade, and legendary cuisine, our kitchen honors recipes passed down through generations.</p>
+        <p>Every kabob is marinated for hours in yogurt and Afghan spices. Every grain of basmati rice is steamed to fluffy perfection with sweet raisins, slivered almonds, and caramelized carrots — <span class="ar">قابلی پلو</span>, our national treasure.</p>
+        <p>From our juicy <strong>Mix Grill</strong> platter to our famous <strong>Qabeli Palow</strong> with tender lamb shank, every bite tells a story of tradition, hospitality, and love. <span class="ar">نوش جان</span> — bon appétit.</p>
+        <div class="about-stats">
+          <div class="about-stat">
+            <div class="num green">458+</div>
+            <div class="label">Reviews</div>
+          </div>
+          <div class="about-stat">
+            <div class="num brown">4.6★</div>
+            <div class="label">Rating</div>
+          </div>
+          <div class="about-stat">
+            <div class="num">100%</div>
+            <div class="label">Halal</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTERIOR PHOTOS ============ -->
+<section class="interior">
+  <div class="container">
+    <div style="text-align:center;">
+      <span class="section-tag">Our Space</span>
+      <h2 class="section-title">DINNER AT <span class="highlight">KHORASAAN</span></h2>
+      <div class="section-ar">فضای رستورانت ما</div>
+      <p class="section-desc" style="margin:1.5rem auto 0;">Cozy dine-in seating, freshly made daily, and a warm Brooklyn welcome — whether you're eating in or taking out.</p>
+    </div>
+    <div class="interior-grid">
+      <div class="interior-photo interior-photo-1 reveal">
+        <div class="label">
+          DINE-IN AREA
+          <span class="ar">محل نشستن</span>
+        </div>
+      </div>
+      <div class="interior-photo interior-photo-2 reveal reveal-delay-1">
+        <div class="label">
+          ORDER COUNTER
+          <span class="ar">باجه سفارش</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTERACTIVE MENU ============ -->
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="menu-header">
+      <span class="section-tag">Our Menu</span>
+      <h2 class="section-title">EXPLORE OUR <span class="highlight">FLAVORS</span></h2>
+      <div class="section-ar">منوی ما — کلیک کنید و طعم را کشف کنید</div>
+      <p class="section-desc">Click any dish to see full details, ingredients, and ordering options. Search by name, filter by preference.</p>
+    </div>
+
+    <!-- Search & Filter -->
+    <div class="menu-controls">
+      <div class="menu-search" id="menuSearch">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="menuSearchInput" placeholder="Search dishes, ingredients, or Arabic names...">
+        <div class="clear-btn" id="clearSearch">✕</div>
+      </div>
+      <button class="menu-filter-toggle" id="filterToggle">
+        ⚙️ Filters
       </button>
     </div>
-    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <div class="hero-pattern" aria-hidden="true"></div>
-    <div class="hero-overlay" aria-hidden="true"></div>
-    <div class="hero-content container">
-      <p class="hero-subtitle reveal-up">Authentic Afghan Flavors in Brooklyn</p>
-      <h1 class="hero-title reveal-up">Khorasaan Kabab & Gyro</h1>
-      <p class="hero-tagline reveal-up">Halal &#183; Fresh &#183; Made with Passion</p>
-      <p class="hero-dari reveal-up">&#x62E;&#x648;&#x631;&#x627;&#x633;&#x627;&#x646; &#x6A9;&#x628;&#x627;&#x628; &#x648; &#x698;&#x6CC;&#x631;&#x648;</p>
-      <div class="hero-rating reveal-up" aria-label="4.6 out of 5 stars from 458 reviews">
-        <span class="stars" aria-hidden="true">
-          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span class="half">&#9733;</span>
-        </span>
-        <span class="rating-text"><strong>4.6</strong> (458 reviews)</span>
+    <!-- Filter Pills -->
+    <div class="menu-filters" id="menuFilters">
+      <button class="filter-pill active" data-filter="all">All Items</button>
+      <button class="filter-pill" data-filter="halal">✓ Halal</button>
+      <button class="filter-pill" data-filter="vegetarian">🌱 Vegetarian</button>
+      <button class="filter-pill" data-filter="spicy">🌶 Spicy</button>
+      <button class="filter-pill" data-filter="popular">★ Popular</button>
+      <button class="filter-pill" data-filter="signature">👑 Signature</button>
+      <button class="filter-pill" data-filter="family">👨‍👩‍👧‍👦 Family Size</button>
+      <button class="filter-pill" data-filter="kids">👶 Kids</button>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="menu-tabs" id="menuTabs">
+      <button class="menu-tab active" data-tab="all">All <span class="count" id="count-all">0</span></button>
+      <button class="menu-tab" data-tab="appetizers"><span class="icon">🥟</span> Appetizers <span class="count">5</span></button>
+      <button class="menu-tab" data-tab="kabobs"><span class="icon">🍢</span> Entree Kabobs <span class="count">10</span></button>
+      <button class="menu-tab" data-tab="gyros"><span class="icon">🌯</span> Gyros <span class="count">10</span></button>
+      <button class="menu-tab" data-tab="palow"><span class="icon">🍚</span> Kabuli Palao <span class="count">3</span></button>
+      <button class="menu-tab" data-tab="burgers"><span class="icon">🍔</span> Burgers <span class="count">6</span></button>
+      <button class="menu-tab" data-tab="falafel"><span class="icon">🧆</span> Falafel <span class="count">3</span></button>
+      <button class="menu-tab" data-tab="seafood"><span class="icon">🐟</span> Fish/Shrimp <span class="count">5</span></button>
+      <button class="menu-tab" data-tab="sandwiches"><span class="icon">🥖</span> Sandwiches <span class="count">2</span></button>
+      <button class="menu-tab" data-tab="sides"><span class="icon">🍟</span> Sides & More <span class="count">14</span></button>
+    </div>
+
+    <!-- All categories will be injected here by JS -->
+    <div id="menuContainer"></div>
+  </div>
+</section>
+
+<!-- ============ GALLERY (REAL PHOTOS) ============ -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div style="text-align:center; position:relative; z-index:1;">
+      <span class="section-tag">Gallery</span>
+      <h2 class="section-title">TASTE THE <span class="highlight">VISUAL</span></h2>
+      <div class="section-ar">تصاویر — نگاهی به سفره ما</div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item gallery-item-1"></div>
+      <div class="gallery-item gallery-item-2"></div>
+      <div class="gallery-item gallery-item-3"></div>
+      <div class="gallery-item gallery-item-4"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATERING SECTION ============ -->
+<section class="catering" id="catering">
+  <div class="container">
+    <div style="text-align:center;">
+      <span class="section-tag">Catering</span>
+      <h2 class="section-title">CATERING FOR <span class="highlight">ALL OCCASIONS</span></h2>
+      <div class="section-ar">پذیرایی برای مناسبت ها</div>
+      <p class="section-desc" style="margin:1.5rem auto 0;">From intimate gatherings to large events, our authentic Afghan cuisine brings warmth and flavor to every occasion. Call us to plan your perfect menu.</p>
+    </div>
+    <div class="catering-features">
+      <div class="catering-feature reveal">
+        <span class="icon">🎂</span>
+        <h4>BIRTHDAYS</h4>
+        <p>Celebrate with family-style platters your guests will love</p>
       </div>
-      <div class="hero-actions reveal-up">
-        <a href="#menu" class="btn btn-gold btn-lg">View Menu</a>
-        <a href="tel:+13473127777" class="btn btn-outline btn-lg">Call Now</a>
+      <div class="catering-feature reveal reveal-delay-1">
+        <span class="icon">💼</span>
+        <h4>CORPORATE</h4>
+        <p>Office lunches, meetings, and team events done right</p>
+      </div>
+      <div class="catering-feature reveal reveal-delay-2">
+        <span class="icon">💍</span>
+        <h4>WEDDINGS</h4>
+        <p>Make your special day delicious with our full-service catering</p>
+      </div>
+      <div class="catering-feature reveal reveal-delay-3">
+        <span class="icon">🕌</span>
+        <h4>HALAL EVENTS</h4>
+        <p>100% halal menu options for all religious & cultural events</p>
       </div>
     </div>
-    <div class="hero-scroll" aria-hidden="true">
-      <span class="mouse"></span>
+    <div style="text-align:center; margin-top:3rem;">
+      <a href="tel:3473127777" class="btn-saffron">📞 Call (347) 312-7777</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- About -->
-  <section class="about section" id="about">
-    <div class="section-pattern" aria-hidden="true"></div>
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Our Story</span>
-        <h2 class="section-title">A Taste of Afghanistan in Brooklyn</h2>
-        <div class="divider"><span></span></div>
+<!-- ============ REVIEWS ============ -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="reviews-header">
+      <span class="section-tag">Reviews</span>
+      <h2 class="section-title">WHAT BROOKLYN <span class="highlight">SAYS</span></h2>
+      <div class="section-ar">نظرات مشتریان</div>
+      <p class="section-desc">From our regulars to first-timers, here's what people are saying about Khorasaan.</p>
+    </div>
+    <div class="reviews-summary reveal">
+      <div class="reviews-rating">4.6</div>
+      <div class="reviews-stars">★★★★★</div>
+      <div class="reviews-count">Based on 458 Google reviews</div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I got the mixed grill and chicken entrees — everything was delicious! Loved how flavorful the rice was. I'll definitely be coming back. I asked for extra meat on the mixed grill platter and they delivered!"</p>
+        <div class="review-author">
+          <div class="review-avatar">S</div>
+          <div>
+            <div class="review-name">Sherrie Yu</div>
+            <div class="review-meta">Local Guide <span class="review-badge">✓ Verified</span></div>
+          </div>
+        </div>
       </div>
-      <div class="about-grid">
-        <div class="about-image reveal">
-          <div class="image-frame">
-            <div class="afghan-arch" aria-hidden="true">
-              <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-                <defs>
-                  <pattern id="tile" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <rect width="40" height="40" fill="#0a0a0a"/>
-                    <path d="M0 20 L20 0 L40 20 L20 40 Z" fill="none" stroke="#1b9d57" stroke-width="0.8"/>
-                    <circle cx="20" cy="20" r="3" fill="#d4af37"/>
-                  </pattern>
-                </defs>
-                <!-- Arch frame -->
-                <path d="M20 240 L20 80 Q100 0 180 80 L180 240" fill="url(#tile)" stroke="#d4af37" stroke-width="3"/>
-                <path d="M35 240 L35 90 Q100 25 165 90 L165 240" fill="none" stroke="#1b9d57" stroke-width="2"/>
-                <!-- Inner geometric rosette -->
-                <circle cx="100" cy="125" r="28" fill="none" stroke="#d4af37" stroke-width="2"/>
-                <circle cx="100" cy="125" r="14" fill="#1b9d57"/>
-                <g stroke="#d4af37" stroke-width="1.5">
-                  <line x1="100" y1="97" x2="100" y2="65" />
-                  <line x1="100" y1="153" x2="100" y2="185" />
-                  <line x1="72" y1="125" x2="40" y2="125" />
-                  <line x1="128" y1="125" x2="160" y2="125" />
-                  <line x1="80" y1="105" x2="58" y2="83" />
-                  <line x1="120" y1="105" x2="142" y2="83" />
-                  <line x1="80" y1="145" x2="58" y2="167" />
-                  <line x1="120" y1="145" x2="142" y2="167" />
-                </g>
-              </svg>
+      <div class="review-card reveal reveal-delay-1">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Had a truly pleasant experience. The food was delicious — rich in flavor, with perfectly cooked chicken and fluffy rice topped with raisins, almonds, and carrots. Beautifully presented and very filling."</p>
+        <div class="review-author">
+          <div class="review-avatar">R</div>
+          <div>
+            <div class="review-name">Ralph Y.</div>
+            <div class="review-meta">Local Guide <span class="review-badge">✓ Verified</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-2">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Their portions are very generous and the food is tasty. I love the chicken kebab with rice and the big choice of vegetables. Very good place even for picky eaters like me!"</p>
+        <div class="review-author">
+          <div class="review-avatar">K</div>
+          <div>
+            <div class="review-name">Kitty Kat</div>
+            <div class="review-meta">9 reviews</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INFO / VISIT ============ -->
+<section class="info" id="info">
+  <div class="container">
+    <div style="text-align:center; position:relative; z-index:1;">
+      <span class="section-tag">Visit Us</span>
+      <h2 class="section-title">COME HUNGRY, <span class="highlight">LEAVE HAPPY</span></h2>
+      <div class="section-ar">به ما سر بزنید</div>
+    </div>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="icon">📍</div>
+        <h3>Find Us</h3>
+        <p>1947 Bath Ave</p>
+        <p>Brooklyn, NY 11214</p>
+        <a href="https://maps.google.com/?q=1947+Bath+Ave+Brooklyn+NY+11214" target="_blank">Get Directions →</a>
+      </div>
+      <div class="info-card">
+        <div class="icon">🕐</div>
+        <h3>Hours</h3>
+        <p>Open Daily</p>
+        <p>10:00 AM – Late</p>
+        <p style="font-size:.85rem;color:var(--muted);margin-top:.5rem">Check Google for today's hours</p>
+      </div>
+      <div class="info-card">
+        <div class="icon">📞</div>
+        <h3>Call to Order</h3>
+        <p>(347) 312-7777</p>
+        <p>Online ordering available</p>
+        <a href="tel:3473127777">Call Now →</a>
+      </div>
+    </div>
+    <div class="info-actions">
+      <a href="tel:3473127777" class="btn-saffron">📞 Call to Order</a>
+      <a href="https://khorasankababgyro.com" target="_blank" class="btn-outline-cream">🌐 Order Online</a>
+      <a href="https://maps.google.com/?q=1947+Bath+Ave+Brooklyn+NY+11214" target="_blank" class="btn-outline-cream">📍 Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#home" class="nav-logo">
+        <div class="mark"><span>خ</span></div>
+        KHORASAAN
+      </a>
+      <p>Authentic Afghan & Mediterranean cuisine in the heart of Brooklyn. 100% halal, freshly prepared, always delicious.</p>
+      <span class="ar">خوراسان کباب و جایرو — نوش جان</span>
+      <div class="footer-social" style="margin-top:1.5rem">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">i</a>
+        <a href="#" aria-label="Yelp">y</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#catering">Catering</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#info">Visit</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a>📍 1947 Bath Ave</a></li>
+        <li><a>Brooklyn, NY 11214</a></li>
+        <li><a href="tel:3473127777">📞 (347) 312-7777</a></li>
+        <li><a href="mailto:hello@khorasankababgyro.com">✉️ Email Us</a></li>
+        <li><a href="https://khorasankababgyro.com" target="_blank">🌐 Order Online</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a>✓ 100% Halal</a></li>
+        <li><a>✓ LGBTQ+ Friendly</a></li>
+        <li><a>✓ Dine-in Available</a></li>
+        <li><a>✓ Curbside Pickup</a></li>
+        <li><a>✓ Catering for All Occasions</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Khorasaan Kabab & Gyro. All rights reserved.</p>
+    <p>Made with ❤️ in Brooklyn, NY</p>
+  </div>
+</footer>
+
+<script>
+// ============ MENU DATA (matches actual menu from photos) ============
+const menuData = [
+  // APPETIZERS
+  { id:1, category:'appetizers', name:'Starter Platter', ar:'استارتر', price:5.99, desc:'Mozzarella sticks (6pcs) with marinara dipping sauce — golden, gooey perfection.', emoji:'🧀', tags:['popular','vegetarian'], features:['6 Mozzarella Sticks','Marinara Sauce','Crispy'] },
+  { id:2, category:'appetizers', name:'Samosa (Chicken)', ar:'سمبوسه مرغ', price:5.99, desc:'Crispy golden pastries stuffed with spiced ground chicken. A true Afghan favorite.', emoji:'🥟', tags:['halal','popular'], features:['Crispy Pastry','Spiced Chicken','Afghan Favorite'] },
+  { id:3, category:'appetizers', name:'Onion Rings', ar:'پیاز سرخ شده', price:5.99, desc:'Ten pieces of golden, beer-battered onion rings, crispy outside and tender inside.', emoji:'🧅', tags:['popular','vegetarian'], features:['10 Pieces','Crispy','Beer-Battered'] },
+  { id:4, category:'appetizers', name:'Veggie Samosa', ar:'سمبوسه سبزیجات', price:1.99, desc:'Crispy pastry pockets filled with spiced potatoes, peas, and herbs. Vegetarian delight.', emoji:'🥟', tags:['vegetarian'], features:['Vegetarian','Spiced Potato','Hand-Made'] },
+  { id:58, category:'appetizers', name:'Loaded Fries', ar:'سیب زمینی لودد', price:8.99, desc:'Crispy fries piled high with toppings — melty, savory, and made for sharing.', emoji:'🍟', tags:['popular'], features:['Piled High','Shareable','Fan Favorite'] },
+
+  // ENTREE KABOBS (from menu)
+  { id:5, category:'kabobs', name:'Chicken Kabob', ar:'چیکن کباب', price:14.99, desc:'Marinated chicken chunks, grilled to smoky perfection. Served with rice, salad, and bread.', emoji:'🍢', tags:['halal','popular'], features:['Served with Rice','Served with Salad','Served with Bread'] },
+  { id:6, category:'kabobs', name:'Chicken Kofta', ar:'کوفته مرغ', price:12.99, desc:'Hand-seasoned ground chicken skewers, flame-grilled with onions and peppers. With rice, salad, and bread.', emoji:'🍢', tags:['halal'], features:['Hand-Seasoned','Served with Rice','Skewered'] },
+  { id:7, category:'kabobs', name:'Beef Kofta', ar:'کوفته گوشت', price:13.99, desc:'Seasoned ground beef skewers, grilled to juicy perfection. Served with rice, salad, and bread.', emoji:'🍢', tags:['halal'], features:['Ground Beef','Served with Rice','Flame-Grilled'] },
+  { id:8, category:'kabobs', name:'Mix Grill', ar:'میکس گریل', price:21.99, desc:'The ultimate platter — Lamb, Chicken & Beef together. Best value! Served with rice, salad, and bread.', emoji:'🍖', photo:'mix-grill.jpg', tags:['halal','signature','popular'], features:['3 Skewers','Lamb + Chicken + Beef','Best Value'] },
+  { id:9, category:'kabobs', name:'Lamb Kebob', ar:'کباب گوشت', price:15.99, desc:'Tender pieces of lamb, marinated in yogurt and Afghan spices, then char-grilled. With rice, salad, and bread.', emoji:'🍢', photo:'lamb-rice.jpg', tags:['halal'], features:['Premium Lamb','Afghan Spices','Served with Rice'] },
+  { id:10, category:'kabobs', name:'Lamb Chops', ar:'بره کباب', price:19.99, desc:'Thick-cut lamb chops, marinated and grilled over open flame. Served with rice, salad, and bread.', emoji:'🍖', tags:['halal'], features:['Thick-Cut','Open Flame','Served with Rice'] },
+  { id:11, category:'kabobs', name:'Chapli Kabob', ar:'چپلی کباب', price:13.99, desc:'Peshawar-style flat minced beef kabob, spiced with coriander, cumin, and chili. Served with rice, salad, and bread.', emoji:'🍢', tags:['halal','spicy'], features:['Peshawar Style','Spiced','Flat Patty'] },
+  { id:55, category:'kabobs', name:'Fish Kabob', ar:'کباب ماهی', price:17.99, desc:'Marinated fish grilled on the skewer. Served with rice, salad, and bread.', emoji:'🐟', tags:['halal'], features:['Served with Rice','Served with Salad','Served with Bread'] },
+  { id:56, category:'kabobs', name:'Platter for 4 People', ar:'پلاتر برای ۴ نفر', price:59.99, desc:'1 skewer each: lamb, chicken, kofta — with rice, salad, and bread. Perfect for the family.', emoji:'🍖', tags:['halal','family'], features:['1 Skewer Each','Lamb + Chicken + Kofta','Feeds 4'] },
+  { id:57, category:'kabobs', name:'Platter for 8 People', ar:'پلاتر برای ۸ نفر', price:109.99, desc:'1 skewer each: lamb, chicken, kofta — with rice, salad, and bread. Great for gatherings.', emoji:'🍖', tags:['halal','family'], features:['1 Skewer Each','Lamb + Chicken + Kofta','Feeds 8'] },
+
+  // GYROS / OVER RICE
+  { id:12, category:'gyros', name:'Chicken Over Rice', ar:'مرغ با برنج', price:10.99, desc:'Tender marinated chicken over our aromatic basmati rice with fresh salad and white sauce.', emoji:'🌯', photo:'chicken-rice.jpg', tags:['halal','popular'], features:['Halal Meat','Saffron Rice','White Sauce'] },
+  { id:13, category:'gyros', name:'Lamb Over Rice', ar:'گوشت با برنج', price:10.99, desc:'Juicy seasoned lamb over fluffy basmati, topped with grilled onions and our signature white sauce.', emoji:'🥩', photo:'lamb-rice.jpg', tags:['halal','popular'], features:['Halal Lamb','Saffron Rice','Grilled Onions'] },
+  { id:14, category:'gyros', name:'Mix Over Rice', ar:'مخلوط با برنج', price:10.99, desc:'The best of both worlds — chicken and lamb together over our saffron-spiced rice.', emoji:'🌯', tags:['halal'], features:['Half Chicken, Half Lamb','Saffron Rice','Best of Both'] },
+  { id:15, category:'gyros', name:'Chicken Over Salad', ar:'مرغ با سالاد', price:10.99, desc:'Grilled chicken on a bed of crisp fresh greens — lighter, fresher, equally delicious.', emoji:'🥗', tags:['halal'], features:['Fresh Greens','Light Option','Halal Chicken'] },
+  { id:16, category:'gyros', name:'Lamb Over Salad', ar:'گوشت با سالاد', price:10.99, desc:'Tender lamb served over fresh garden salad with house dressing.', emoji:'🥗', tags:['halal'], features:['Fresh Greens','Halal Lamb','House Dressing'] },
+  { id:17, category:'gyros', name:'Mix Over Salad', ar:'مخلوط با سالاد', price:10.99, desc:'Chicken and lamb together, served fresh over crisp salad greens.', emoji:'🥗', tags:['halal'], features:['Mixed Proteins','Fresh Greens','Light & Filling'] },
+  { id:18, category:'gyros', name:'Chicken with Pita', ar:'مرغ با نان', price:7.99, desc:'Marinated chicken wrapped in warm pita with lettuce, tomato, and white sauce.', emoji:'🌯', tags:['halal'], features:['Warm Pita','Fresh Veggies','Halal Chicken'] },
+  { id:19, category:'gyros', name:'Lamb with Pita', ar:'گوشت با نان', price:7.99, desc:'Seasoned lamb tucked in fresh pita with onions, tomatoes, and our creamy sauce.', emoji:'🌯', tags:['halal'], features:['Warm Pita','Halal Lamb','Creamy Sauce'] },
+  { id:20, category:'gyros', name:'Mix with Pita', ar:'مخلوط با نان', price:7.99, desc:'Both chicken and lamb in a warm pita — the ultimate gyro experience.', emoji:'🌯', tags:['halal'], features:['Half & Half','Warm Pita','Ultimate Combo'] },
+  { id:21, category:'gyros', name:'Chicken Leg / Rice', ar:'ران مرغ با برنج', price:10.99, desc:'A whole roasted chicken leg quarter over our signature saffron rice.', emoji:'🍗', tags:['halal'], features:['Whole Leg','Saffron Rice','Halal'] },
+
+  // KABULI PALAOW
+  { id:22, category:'palow', name:'Qabeli Palaow — Lamb', ar:'قابلی پلو', price:19.99, desc:'Afghanistan\'s national dish — fragrant basmati rice topped with sweet carrots, raisins, almonds, and tender lamb.', emoji:'🍚', photo:'qabeli-palow.jpg', tags:['halal','signature'], features:['National Dish','Sweet & Savory','Almonds & Raisins'] },
+  { id:23, category:'palow', name:'Qabeli Palaow — Lamb Shank', ar:'قابلی پلو با لنگه', price:19.99, desc:'Our famous Qabeli Palow with a slow-braised fall-off-the-bone lamb shank on top.', emoji:'🍖', tags:['halal','popular'], features:['Slow-Braised','Fall-Off-Bone','Signature'] },
+  { id:24, category:'palow', name:'Qabeli Palaow — Chicken', ar:'قابلی پلو مرغ', price:18.99, desc:'Same beautiful sweet-and-savory rice, topped with our perfectly spiced chicken.', emoji:'🍗', tags:['halal'], features:['Sweet & Savory','Spiced Chicken','Afghan Classic'] },
+
+  // BURGERS
+  { id:25, category:'burgers', name:'Chicken Burger', ar:'برگر مرغ', price:5.99, desc:'Juicy halal chicken patty with crisp lettuce and our special sauce.', emoji:'🍔', tags:['halal'], features:['Halal Patty','Crisp Lettuce','Special Sauce'] },
+  { id:26, category:'burgers', name:'Cheese Burger', ar:'چیز برگر', price:5.99, desc:'Classic American-style cheeseburger, made with 100% halal beef.', emoji:'🍔', tags:['halal'], features:['Halal Beef','Melted Cheese','American Style'] },
+  { id:27, category:'burgers', name:'Double Chicken Burger', ar:'دوبل برگر مرغ', price:11.99, desc:'Two stacked halal chicken patties with double cheese. For serious appetites.', emoji:'🍔', tags:['halal'], features:['Double Patty','Double Cheese','Big Appetite'] },
+  { id:28, category:'burgers', name:'Double Cheese Burger', ar:'دوبل چیز برگر', price:11.99, desc:'Two halal beef patties loaded with melted cheese. A Brooklyn classic.', emoji:'🍔', tags:['halal'], features:['Double Beef','Extra Cheese','BK Classic'] },
+  { id:29, category:'burgers', name:'Chicken Burger Meal', ar:'وعده برگر مرغ', price:8.99, desc:'Chicken burger served with seasoned fries and a drink. Complete meal deal.', emoji:'🍔', tags:['halal','popular'], features:['Meal Deal','With Fries','With Drink'] },
+  { id:30, category:'burgers', name:'Cheese Burger Meal', ar:'وعده چیز برگر', price:8.99, desc:'Cheeseburger combo with crispy seasoned fries and a refreshing drink.', emoji:'🍔', tags:['halal','popular'], features:['Meal Deal','With Fries','With Drink'] },
+
+  // FALAFEL
+  { id:31, category:'falafel', name:'Falafel Over Rice', ar:'فلافل با برنج', price:10.99, desc:'Crispy golden falafel patties over our saffron basmati rice with fresh salad and tahini.', emoji:'🧆', tags:['vegetarian','popular'], features:['Vegetarian','Saffron Rice','Tahini Sauce'] },
+  { id:32, category:'falafel', name:'Falafel Over Salad', ar:'فلافل با سالاد', price:10.99, desc:'Crispy falafel served over fresh mixed greens with house dressing.', emoji:'🧆', tags:['vegetarian'], features:['Vegetarian','Fresh Greens','Light Meal'] },
+  { id:33, category:'falafel', name:'Falafel with Pita', ar:'فلافل با نان', price:7.99, desc:'Hot falafel wrapped in fresh pita with lettuce, tomato, pickles, and tahini.', emoji:'🧆', tags:['vegetarian'], features:['Vegetarian','Warm Pita','With Tahini'] },
+
+  // FISH/SHRIMP
+  { id:34, category:'seafood', name:'Tilapia Fish Over Rice', ar:'ماهی با برنج', price:11.99, desc:'Golden fried tilapia fillet over our basmati rice with salad and white sauce.', emoji:'🐟', tags:['halal'], features:['Golden Fried','With Rice','White Sauce'] },
+  { id:35, category:'seafood', name:'Tilapia Fish Over Salad', ar:'ماهی با سالاد', price:11.99, desc:'Crispy tilapia fillet on a bed of fresh greens. Light and satisfying.', emoji:'🐟', tags:['halal'], features:['Crispy','Fresh Greens','Light'] },
+  { id:36, category:'seafood', name:'Tilapia Fish with Fries', ar:'ماهی با سیب زمینی', price:11.99, desc:'Fried tilapia served with crispy seasoned fries and tartar sauce.', emoji:'🐟', tags:['halal'], features:['With Fries','Tartar Sauce','Crispy'] },
+  { id:37, category:'seafood', name:'Shrimp Basket', ar:'سبد میگو', price:7.99, desc:'A basket of golden, crispy fried shrimp — perfect for sharing or as a snack.', emoji:'🍤', tags:['halal'], features:['Crispy Fried','Shareable','Halal'] },
+  { id:38, category:'seafood', name:'Jumbo Shrimp with Fries', ar:'میگوی بزرگ', price:9.99, desc:'Jumbo shrimp, fried to perfection, served with crispy fries.', emoji:'🍤', tags:['halal','popular'], features:['Jumbo Size','With Fries','Fan Favorite'] },
+
+  // SANDWICHES (from menu: Reg/Combo prices)
+  { id:39, category:'sandwiches', name:'Philly Cheese Steak', ar:'فیلی چیز استیک', price:8.99, combo:11.99, desc:'Sliced halal beef with melted cheese, peppers, and onions on a fresh hero. Reg $8.99 / Combo $11.99.', emoji:'🥖', tags:['halal','popular'], features:['Halal Beef','Melted Cheese','Fresh Hero'] },
+  { id:40, category:'sandwiches', name:'Grilled Chicken on Hero', ar:'مرغ کبابی', price:8.99, combo:11.99, desc:'Tender grilled chicken with lettuce, tomato, and our signature white sauce. Reg $8.99 / Combo $11.99.', emoji:'🥖', tags:['halal'], features:['Halal Chicken','White Sauce','Fresh Hero'] },
+
+  // SIDES & EXTRAS
+  { id:41, category:'sides', name:'Small Fries', ar:'سیب زمینی کوچک', price:3.99, desc:'Crispy golden fries — our small portion, perfect as a side.', emoji:'🍟', tags:['vegetarian'], features:['Crispy','Golden','Small'] },
+  { id:42, category:'sides', name:'Medium Fries', ar:'سیب زمینی متوسط', price:4.99, desc:'A medium portion of our crispy seasoned fries.', emoji:'🍟', tags:['vegetarian'], features:['Seasoned','Medium','Crispy'] },
+  { id:43, category:'sides', name:'Large Fries', ar:'سیب زمینی بزرگ', price:5.99, desc:'A generous portion of our famous seasoned fries.', emoji:'🍟', tags:['vegetarian'], features:['Seasoned','Large','Generous'] },
+  { id:44, category:'sides', name:'Hot Wings with Fries', ar:'بال مرغ با سیب زمینی', price:11.99, desc:'Spicy hot wings served with crispy fries. Perfect for sharing!', emoji:'🍗', tags:['spicy','popular'], features:['Spicy','With Fries','Shareable'] },
+  { id:45, category:'sides', name:'Chicken Nugget Meal', ar:'وعده ناگت', price:6.99, desc:'Golden chicken nuggets with fries and a drink. Kid-approved!', emoji:'🍗', tags:['kids'], features:['Kid-Approved','With Fries','With Drink'] },
+  { id:46, category:'sides', name:'Chicken Tenders Meal', ar:'وعده تندر', price:7.99, desc:'Crispy chicken tenders served with fries and a drink.', emoji:'🍗', tags:['kids'], features:['Crispy','With Fries','Kid Favorite'] },
+  { id:47, category:'sides', name:'Fried Chicken Meal', ar:'وعده مرغ سوخاری', price:7.99, desc:'Crispy fried chicken pieces with fries and a drink. A comfort classic.', emoji:'🍗', tags:['kids'], features:['Crispy','With Fries','Comfort Food'] },
+  { id:48, category:'sides', name:'Firnee', ar:'فرنی', price:5.99, desc:'Traditional Afghan milk pudding with cardamom, rose water, and pistachios.', emoji:'🍮', tags:['vegetarian'], features:['Traditional','Cardamom','Pistachios'] },
+  { id:49, category:'sides', name:'Baklava', ar:'باقلوا', price:5.99, desc:'Layers of crisp filo, chopped nuts, and sweet honey syrup. Pure bliss.', emoji:'🍰', tags:['vegetarian','popular'], features:['Honey Syrup','Chopped Nuts','Sweet Treat'] },
+  { id:50, category:'sides', name:'Green Tea', ar:'چای سبز', price:1.00, desc:'Hot, aromatic green tea — the perfect finish to any Afghan meal.', emoji:'🫖', tags:['vegetarian'], features:['Hot','Aromatic','$1 Only'] },
+  { id:51, category:'sides', name:'Extra White Sauce', ar:'سس سفید', price:0.50, desc:'Our signature creamy garlic yogurt sauce. Add it to anything!', emoji:'🥛', tags:['vegetarian'], features:['Creamy','Garlic Yogurt','Signature'] },
+  { id:52, category:'sides', name:'Extra Naan', ar:'نان اضافی', price:1.00, desc:'Fresh-baked Afghan naan, hot from the tandoor.', emoji:'🫓', tags:['vegetarian'], features:['Fresh-Baked','Tandoor','Warm'] },
+  { id:53, category:'sides', name:'Extra Salad', ar:'سالاد اضافی', price:3.00, desc:'A fresh side of mixed greens, tomato, cucumber, and onion.', emoji:'🥗', tags:['vegetarian'], features:['Mixed Greens','Fresh','Extra Portion'] },
+  { id:54, category:'sides', name:'Extra Cooked Raisins & Carrots', ar:'کشمش و هویج', price:3.00, desc:'Sweet Afghan-style carrots and raisins — the perfect rice topping.', emoji:'🥕', tags:['vegetarian'], features:['Sweet','Afghan Style','Rice Topping'] }
+];
+
+// ============ STATE ============
+let currentCategory = 'all';
+let currentFilter = 'all';
+let currentSearch = '';
+
+// ============ PRELOADER ============
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 1000);
+});
+
+// ============ NAV SCROLL ============
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ============ BURGER ============
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+  document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    burger.classList.remove('active');
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+});
+
+// ============ RENDER MENU ============
+function renderMenu() {
+  const container = document.getElementById('menuContainer');
+  let filtered = [...menuData];
+
+  // Filter by category
+  if (currentCategory !== 'all') {
+    filtered = filtered.filter(item => item.category === currentCategory);
+  }
+
+  // Filter by preference
+  if (currentFilter !== 'all') {
+    filtered = filtered.filter(item => item.tags.includes(currentFilter));
+  }
+
+  // Filter by search
+  if (currentSearch) {
+    const s = currentSearch.toLowerCase();
+    filtered = filtered.filter(item =>
+      item.name.toLowerCase().includes(s) ||
+      item.ar.includes(s) ||
+      item.desc.toLowerCase().includes(s) ||
+      item.category.includes(s)
+    );
+  }
+
+  // Update total count
+  document.getElementById('count-all').textContent = menuData.length;
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<div class="menu-empty"><span class="emoji">🍽️</span>No dishes match your search.<br>Try a different filter or search term.</div>`;
+    return;
+  }
+
+  // Group by category
+  const grouped = {};
+  filtered.forEach(item => {
+    if (!grouped[item.category]) grouped[item.category] = [];
+    grouped[item.category].push(item);
+  });
+
+  const categoryNames = {
+    appetizers:'Appetizers', kabobs:'Entree Kabobs', gyros:'Gyros & Over Rice',
+    palow:'Kabuli Palaow', burgers:'Burgers', falafel:'Falafel',
+    seafood:'Fish & Shrimp', sandwiches:'Sandwiches', sides:'Sides & Extras'
+  };
+
+  let html = '';
+  for (const [cat, items] of Object.entries(grouped)) {
+    html += `<div class="menu-category active">
+      <div class="menu-grid" style="margin-bottom:3rem">`;
+    items.forEach(item => {
+      const priceDisplay = item.combo
+        ? `<span class="old">$${item.price.toFixed(2)}</span>$${item.combo.toFixed(2)} <span class="combo-tag">Combo</span>`
+        : `$${item.price.toFixed(2)}`;
+      const tagsHTML = item.tags.map(t => {
+        const labels = {
+          halal:'Halal حلال', popular:'★ Popular', spicy:'🌶 Spicy',
+          signature:'★ Signature', vegetarian:'🌱 Vegetarian', family:'👨‍👩‍👧‍👦 Family',
+          kids:'👶 Kids'
+        };
+        return `<span class="menu-tag-pill ${t}">${labels[t] || t}</span>`;
+      }).join('');
+      html += `
+        <div class="menu-card" data-id="${item.id}">
+          <div class="menu-card-body">
+            <div class="menu-card-header">
+              <div class="menu-card-name">${item.name} <span class="ar">${item.ar}</span></div>
+              <div class="menu-card-price">${priceDisplay}</div>
             </div>
+            <p class="menu-card-desc">${item.desc}</p>
+            <div class="menu-card-tags">${tagsHTML}</div>
           </div>
-        </div>
-        <div class="about-content reveal">
-          <p class="lead">At Khorasaan Kabab & Gyro, we bring generations of Afghan tradition to every plate. From sizzling kababs to perfectly seasoned rice platters, every dish is prepared with halal ingredients and a lot of heart.</p>
-          <p>Located on Bath Avenue in Brooklyn, we are proud to serve our community with generous portions, bold flavors, and the warm hospitality Afghanistan is known for.</p>
-          <div class="features">
-            <div class="feature">
-              <span class="feature-icon" aria-hidden="true">&#10004;</span>
-              <span>100% Halal</span>
-            </div>
-            <div class="feature">
-              <span class="feature-icon" aria-hidden="true">&#10004;</span>
-              <span>Fresh Daily</span>
-            </div>
-            <div class="feature">
-              <span class="feature-icon" aria-hidden="true">&#10004;</span>
-              <span>Family Recipes</span>
-            </div>
-          </div>
-          <p class="dari-quote" dir="rtl" lang="fa">
-            <span class="urdu-script">&#x62E;&#x648;&#x631;&#x627;&#x633;&#x627;&#x646; &#x6A9;&#x628;&#x627;&#x628; &#x648; &#x698;&#x6CC;&#x631;&#x648;</span>
-            <span class="quote-trans">Khorasaan Kabab & Gyro</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Menu -->
-  <section class="menu section" id="menu">
-    <div class="section-pattern-dark" aria-hidden="true"></div>
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Our Menu</span>
-        <h2 class="section-title">Kababs, Gyros &amp; More</h2>
-        <div class="divider"><span></span></div>
-      </div>
-
-      <div class="menu-controls reveal" role="group" aria-label="Menu display controls">
-        <button class="control-btn" id="expandAll" type="button">Expand All</button>
-        <button class="control-btn" id="collapseAll" type="button">Collapse All</button>
-      </div>
-
-      <div class="menu-filters reveal" role="tablist" aria-label="Menu categories">
-        <button class="filter-btn active" role="tab" aria-selected="true" data-category="all">All</button>
-        <button class="filter-btn" role="tab" aria-selected="false" data-category="gyros">Gyros</button>
-        <button class="filter-btn" role="tab" aria-selected="false" data-category="falafel">Falafel</button>
-        <button class="filter-btn" role="tab" aria-selected="false" data-category="fish">Fish/Shrimp</button>
-        <button class="filter-btn" role="tab" aria-selected="false" data-category="burgers">Burgers</button>
-        <button class="filter-btn" role="tab" aria-selected="false" data-category="sandwiches">Sandwiches</button>
-        <button class="filter-btn" role="tab" aria-selected="false" data-category="kabobs">Kabobs</button>
-        <button class="filter-btn" role="tab" aria-selected="false" data-category="palow">Palow</button>
-        <button class="filter-btn" role="tab" aria-selected="false" data-category="appetizer">Appetizer</button>
-        <button class="filter-btn" role="tab" aria-selected="false" data-category="desserts">Desserts/Tea</button>
-        <button class="filter-btn" role="tab" aria-selected="false" data-category="extras">Extras</button>
-        <button class="filter-btn" role="tab" aria-selected="false" data-category="kids">Kids</button>
-      </div>
-
-      <div class="menu-grid" id="menuGrid">
-        <!-- Sandwiches -->
-        <div class="menu-category" data-category="sandwiches">
-          <button class="category-toggle" type="button" aria-expanded="true" aria-controls="cat-sandwiches">
-            <span class="toggle-icon" aria-hidden="true"></span>
-            <span class="toggle-label">Sandwiches</span>
-            <span class="toggle-count">2 items</span>
-          </button>
-          <div class="category-content" id="cat-sandwiches">
-            <article class="menu-card" data-category="sandwiches">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Philly Cheese Steak</h3>
-                <p class="card-desc">Sliced steak with melted cheese on a hero roll.</p>
-                <span class="card-price">$8.99 / $11.99 combo</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="sandwiches">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Grilled Chicken on Hero</h3>
-                <p class="card-desc">Juicy grilled chicken served on a toasted hero roll.</p>
-                <span class="card-price">$8.99 / $11.99 combo</span>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <!-- Kids Meal -->
-        <div class="menu-category" data-category="kids">
-          <button class="category-toggle" type="button" aria-expanded="true" aria-controls="cat-kids">
-            <span class="toggle-icon" aria-hidden="true"></span>
-            <span class="toggle-label">Kids Meal</span>
-            <span class="toggle-count">2 items</span>
-          </button>
-          <div class="category-content" id="cat-kids">
-            <article class="menu-card" data-category="kids">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Chicken Nugget</h3>
-                <p class="card-desc">Crispy chicken nuggets, perfect for little appetites.</p>
-                <span class="card-price">$6.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="kids">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Chicken Tenders</h3>
-                <p class="card-desc">Golden chicken tenders served with fries.</p>
-                <span class="card-price">$7.99</span>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <!-- Desserts/Tea -->
-        <div class="menu-category" data-category="desserts">
-          <button class="category-toggle" type="button" aria-expanded="true" aria-controls="cat-desserts">
-            <span class="toggle-icon" aria-hidden="true"></span>
-            <span class="toggle-label">Desserts / Tea</span>
-            <span class="toggle-count">3 items</span>
-          </button>
-          <div class="category-content" id="cat-desserts">
-            <article class="menu-card" data-category="desserts">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Firnee</h3>
-                <p class="card-desc">Creamy Afghan rice pudding with cardamom and rose water.</p>
-                <span class="card-price">$5.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="desserts">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Baklava</h3>
-                <p class="card-desc">Flaky phyllo pastry layered with chopped nuts and syrup.</p>
-                <span class="card-price">$5.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="desserts">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Green Tea</h3>
-                <p class="card-desc">Hot green tea brewed fresh.</p>
-                <span class="card-price">$1.00</span>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <!-- Appetizer -->
-        <div class="menu-category" data-category="appetizer">
-          <button class="category-toggle" type="button" aria-expanded="true" aria-controls="cat-appetizer">
-            <span class="toggle-icon" aria-hidden="true"></span>
-            <span class="toggle-label">Appetizer</span>
-            <span class="toggle-count">3 items</span>
-          </button>
-          <div class="category-content" id="cat-appetizer">
-            <article class="menu-card" data-category="appetizer">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Mozzarella Sticks</h3>
-                <p class="card-desc">Crispy breaded mozzarella sticks with marinara sauce.</p>
-                <span class="card-price">$5.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="appetizer">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Chicken Samosa</h3>
-                <p class="card-desc">Crispy pastries filled with spiced chicken.</p>
-                <span class="card-price">$5.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="appetizer">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Loaded Fries</h3>
-                <p class="card-desc">Seasoned fries topped with meat, white sauce, and hot sauce.</p>
-                <span class="card-price">$8.99</span>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <!-- Extras -->
-        <div class="menu-category" data-category="extras">
-          <button class="category-toggle" type="button" aria-expanded="true" aria-controls="cat-extras">
-            <span class="toggle-icon" aria-hidden="true"></span>
-            <span class="toggle-label">Extras</span>
-            <span class="toggle-count">4 items</span>
-          </button>
-          <div class="category-content" id="cat-extras">
-            <article class="menu-card" data-category="extras">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Extra White Sauce</h3>
-                <p class="card-desc">Creamy white sauce on the side.</p>
-                <span class="card-price">$0.50</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="extras">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Extra Naan</h3>
-                <p class="card-desc">Freshly baked naan bread.</p>
-                <span class="card-price">$1.00</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="extras">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Extra Salad</h3>
-                <p class="card-desc">Side of fresh mixed salad.</p>
-                <span class="card-price">$3.00</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="extras">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Extra Cooked Raisins &amp; Carrots</h3>
-                <p class="card-desc">Sweet Afghan-style rice topping.</p>
-                <span class="card-price">$3.00</span>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <!-- Gyros -->
-        <div class="menu-category" data-category="gyros">
-          <button class="category-toggle" type="button" aria-expanded="true" aria-controls="cat-gyros">
-            <span class="toggle-icon" aria-hidden="true"></span>
-            <span class="toggle-label">Gyros</span>
-            <span class="toggle-count">10 items</span>
-          </button>
-          <div class="category-content" id="cat-gyros">
-            <article class="menu-card" data-category="gyros">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Chicken Over Rice</h3>
-                <p class="card-desc">Sliced chicken gyro over fragrant rice with white and hot sauce.</p>
-                <span class="card-price">$10.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="gyros">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Chicken with Pita</h3>
-                <p class="card-desc">Sliced chicken gyro wrapped in warm pita bread.</p>
-                <span class="card-price">$7.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="gyros">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Chicken Over Salad</h3>
-                <p class="card-desc">Sliced chicken gyro served over a fresh garden salad.</p>
-                <span class="card-price">$10.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="gyros">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Lamb Over Rice</h3>
-                <p class="card-desc">Seasoned lamb gyro over rice with classic sauces.</p>
-                <span class="card-price">$10.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="gyros">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Lamb with Pita</h3>
-                <p class="card-desc">Seasoned lamb gyro wrapped in warm pita.</p>
-                <span class="card-price">$7.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="gyros">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Lamb Over Salad</h3>
-                <p class="card-desc">Seasoned lamb gyro served over fresh greens.</p>
-                <span class="card-price">$10.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="gyros">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Mix with Pita</h3>
-                <p class="card-desc">Chicken and lamb gyro wrapped together in pita.</p>
-                <span class="card-price">$7.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="gyros">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Mix Over Salad</h3>
-                <p class="card-desc">Chicken and lamb gyro over a fresh salad.</p>
-                <span class="card-price">$10.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="gyros">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Mix Over Rice</h3>
-                <p class="card-desc">Chicken and lamb gyro over fragrant basmati rice.</p>
-                <span class="card-price">$10.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="gyros">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Chicken Leg Over Rice</h3>
-                <p class="card-desc">Whole chicken leg served over fragrant basmati rice.</p>
-                <span class="card-price">$10.99</span>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <!-- Falafel -->
-        <div class="menu-category" data-category="falafel">
-          <button class="category-toggle" type="button" aria-expanded="true" aria-controls="cat-falafel">
-            <span class="toggle-icon" aria-hidden="true"></span>
-            <span class="toggle-label">Falafel</span>
-            <span class="toggle-count">3 items</span>
-          </button>
-          <div class="category-content" id="cat-falafel">
-            <article class="menu-card" data-category="falafel">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Falafel Over Rice</h3>
-                <p class="card-desc">Crispy falafel over rice with tahini and fresh vegetables.</p>
-                <span class="card-price">$10.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="falafel">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Falafel Over Salad</h3>
-                <p class="card-desc">Crispy falafel served over fresh greens.</p>
-                <span class="card-price">$10.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="falafel">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Falafel with Pita</h3>
-                <p class="card-desc">Crispy falafel wrapped in warm pita with veggies and tahini.</p>
-                <span class="card-price">$7.99</span>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <!-- Fish/Shrimp -->
-        <div class="menu-category" data-category="fish">
-          <button class="category-toggle" type="button" aria-expanded="true" aria-controls="cat-fish">
-            <span class="toggle-icon" aria-hidden="true"></span>
-            <span class="toggle-label">Fish / Shrimp</span>
-            <span class="toggle-count">5 items</span>
-          </button>
-          <div class="category-content" id="cat-fish">
-            <article class="menu-card" data-category="fish">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Tilapia Fish Over Rice</h3>
-                <p class="card-desc">Fried tilapia fillet served over rice.</p>
-                <span class="card-price">$11.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="fish">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Tilapia Fish Over Salad</h3>
-                <p class="card-desc">Fried tilapia fillet over fresh salad.</p>
-                <span class="card-price">$11.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="fish">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Tilapia Fish with Fries</h3>
-                <p class="card-desc">Fried tilapia fillet served with seasoned fries.</p>
-                <span class="card-price">$11.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="fish">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Shrimp Basket</h3>
-                <p class="card-desc">Crispy fried shrimp basket.</p>
-                <span class="card-price">$7.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="fish">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Jumbo Shrimp with Fries</h3>
-                <p class="card-desc">Jumbo fried shrimp served with seasoned fries.</p>
-                <span class="card-price">$9.99</span>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <!-- Burgers -->
-        <div class="menu-category" data-category="burgers">
-          <button class="category-toggle" type="button" aria-expanded="true" aria-controls="cat-burgers">
-            <span class="toggle-icon" aria-hidden="true"></span>
-            <span class="toggle-label">Burgers &amp; Fries</span>
-            <span class="toggle-count">8 items</span>
-          </button>
-          <div class="category-content" id="cat-burgers">
-            <article class="menu-card" data-category="burgers">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Chicken Burger Meal</h3>
-                <p class="card-desc">Chicken burger with fries and a drink.</p>
-                <span class="card-price">$8.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="burgers">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Chicken Burger</h3>
-                <p class="card-desc">Crispy chicken burger with lettuce, tomato, and mayo.</p>
-                <span class="card-price">$5.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="burgers">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Double Chicken Burger</h3>
-                <p class="card-desc">Two crispy chicken patties in one burger.</p>
-                <span class="card-price">$11.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="burgers">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Cheese Burger Meal</h3>
-                <p class="card-desc">Cheese burger with fries and a drink.</p>
-                <span class="card-price">$8.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="burgers">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Cheese Burger</h3>
-                <p class="card-desc">Juicy beef burger with melted cheese.</p>
-                <span class="card-price">$5.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="burgers">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Double Cheese Burger</h3>
-                <p class="card-desc">Two beef patties with melted cheese.</p>
-                <span class="card-price">$11.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="burgers">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Small Seasoned Fries</h3>
-                <p class="card-desc">Small seasoned fries.</p>
-                <span class="card-price">$3.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="burgers">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Large Seasoned Fries</h3>
-                <p class="card-desc">Large seasoned fries.</p>
-                <span class="card-price">$5.99</span>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <!-- Entree Kabobs -->
-        <div class="menu-category" data-category="kabobs">
-          <button class="category-toggle" type="button" aria-expanded="true" aria-controls="cat-kabobs">
-            <span class="toggle-icon" aria-hidden="true"></span>
-            <span class="toggle-label">Entree Kabobs</span>
-            <span class="toggle-count">10 items</span>
-          </button>
-          <div class="category-content" id="cat-kabobs">
-            <article class="menu-card" data-category="kabobs">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Chicken Kabob</h3>
-                <p class="card-desc">Served with rice, salad, and bread.</p>
-                <span class="card-price">$14.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="kabobs">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Chicken Kofta</h3>
-                <p class="card-desc">Ground chicken skewers. Served with rice, salad, and bread.</p>
-                <span class="card-price">$12.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="kabobs">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Beef Kofta</h3>
-                <p class="card-desc">Ground beef skewers. Served with rice, salad, and bread.</p>
-                <span class="card-price">$13.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="kabobs">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <div class="card-meta">
-                  <span class="tag">Feast</span>
-                </div>
-                <h3 class="card-title">Mix Grill</h3>
-                <p class="card-desc">Lamb, chicken, and beef skewers. Served with rice, salad, and bread.</p>
-                <span class="card-price">$21.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="kabobs">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Lamb Kabob</h3>
-                <p class="card-desc">Tender lamb cubes. Served with rice, salad, and bread.</p>
-                <span class="card-price">$15.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="kabobs">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Lamb Chops</h3>
-                <p class="card-desc">Juicy grilled lamb chops. Served with rice, salad, and bread.</p>
-                <span class="card-price">$19.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="kabobs">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Chapli Kabob</h3>
-                <p class="card-desc">Spiced beef patty. Served with rice, salad, and bread.</p>
-                <span class="card-price">$13.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="kabobs">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Fish Kabob</h3>
-                <p class="card-desc">Grilled fish skewers. Served with rice, salad, and bread.</p>
-                <span class="card-price">$17.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="kabobs">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <div class="card-meta">
-                  <span class="tag">Family</span>
-                </div>
-                <h3 class="card-title">Platter for 4</h3>
-                <p class="card-desc">1 skewer each of lamb, chicken, kofta + rice, salad, and bread.</p>
-                <span class="card-price">$59.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="kabobs">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <div class="card-meta">
-                  <span class="tag">Family</span>
-                </div>
-                <h3 class="card-title">Platter for 8</h3>
-                <p class="card-desc">Larger platter with lamb, chicken, kofta skewers, rice, salad, and bread.</p>
-                <span class="card-price">$109.99</span>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <!-- Palow -->
-        <div class="menu-category" data-category="palow">
-          <button class="category-toggle" type="button" aria-expanded="true" aria-controls="cat-palow">
-            <span class="toggle-icon" aria-hidden="true"></span>
-            <span class="toggle-label">Palow</span>
-            <span class="toggle-count">3 items</span>
-          </button>
-          <div class="category-content" id="cat-palow">
-            <article class="menu-card" data-category="palow">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Kabuli Palow Lamb</h3>
-                <p class="card-desc">Fragrant Afghan rice with tender lamb, raisins, carrots, and nuts.</p>
-                <span class="card-price">$19.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="palow">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Kabuli Palow Lamb Shank</h3>
-                <p class="card-desc">Traditional rice with a fall-off-the-bone lamb shank.</p>
-                <span class="card-price">$19.99</span>
-              </div>
-            </article>
-
-            <article class="menu-card" data-category="palow">
-              <div class="card-img" aria-hidden="true"></div>
-              <div class="card-body">
-                <h3 class="card-title">Kabuli Palow Chicken</h3>
-                <p class="card-desc">Fragrant Afghan rice with tender chicken, raisins, carrots, and nuts.</p>
-                <span class="card-price">$18.99</span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-note reveal">
-        <p>Entree kabobs are served with rice, salad, and bread. Grilled tomato and pepper available for an extra $3.00. Prices and availability may vary.</p>
-        <a href="https://www.grubhub.com" target="_blank" rel="noopener" class="btn btn-gold">Order via GrubHub</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Popular Highlights -->
-  <section class="popular section" id="popular">
-    <div class="section-pattern" aria-hidden="true"></div>
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Fan Favorites</span>
-        <h2 class="section-title">What Our Guests Love</h2>
-        <div class="divider"><span></span></div>
-      </div>
-      <div class="popular-grid">
-        <div class="popular-card reveal">
-          <div class="popular-img" role="img" aria-label="Chicken over rice illustration"></div>
-          <div class="popular-body">
-            <h3>Chicken Over Rice</h3>
-            <p>"Sliced chicken gyro over fragrant rice with white and hot sauce — a Brooklyn classic done right."</p>
-            <span class="popular-price">$10.99</span>
-          </div>
-        </div>
-        <div class="popular-card reveal">
-          <div class="popular-img" role="img" aria-label="Lamb over rice illustration"></div>
-          <div class="popular-body">
-            <h3>Lamb Over Rice</h3>
-            <p>"Seasoned lamb gyro over rice with classic sauces — rich, savory, and perfectly portioned."</p>
-            <span class="popular-price">$10.99</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Reviews -->
-  <section class="reviews section" id="reviews">
-    <div class="section-pattern-dark" aria-hidden="true"></div>
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Reviews</span>
-        <h2 class="section-title">What People Are Saying</h2>
-        <div class="divider"><span></span></div>
-      </div>
-      <div class="reviews-grid">
-        <blockquote class="review-card reveal">
-          <div class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"I got the mixed grill and chicken entrees, everything was delicious! I loved how flavorful the rice was. I'll definitely be coming back."</p>
-          <footer>
-            <strong>Sherrie Yu</strong>
-            <span>Local Guide &#183; 2 months ago</span>
-          </footer>
-        </blockquote>
-
-        <blockquote class="review-card reveal">
-          <div class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Had a truly pleasant experience. The food was delicious &#8212; rich in flavor, with perfectly cooked chicken, fluffy rice topped with raisins, almonds, and carrots. The dish was beautifully presented and very filling."</p>
-          <footer>
-            <strong>Ralph Y</strong>
-            <span>Local Guide &#183; a year ago</span>
-          </footer>
-        </blockquote>
-
-        <blockquote class="review-card reveal">
-          <div class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Their portions are very generous, food is tasty. I love chicken kebab with rice and big choice of vegetables. Very good place even for picky eaters like me."</p>
-          <footer>
-            <strong>Kitty Kat</strong>
-            <span>4 months ago</span>
-          </footer>
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery -->
-  <section class="gallery section" id="gallery">
-    <div class="section-pattern" aria-hidden="true"></div>
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Gallery</span>
-        <h2 class="section-title">A Glimpse Inside</h2>
-        <div class="divider"><span></span></div>
-      </div>
-      <div class="gallery-grid">
-        <div class="gallery-item reveal tall"><img src="images/interior.jpg" alt="Khorasan Kabab & Gyro interior with orange walls, menu screens, and wooden tables" loading="lazy" decoding="async"></div>
-        <div class="gallery-item reveal"><img src="images/combo-kabab.jpg" alt="Combo kabab platters with chicken tikka, beef cubes, and seekh kabab over rice" loading="lazy" decoding="async"></div>
-        <div class="gallery-item reveal"><img src="images/qabuli-palow.jpg" alt="Qabuli Palow plate with basmati rice, caramelized carrots, raisins, and meat" loading="lazy" decoding="async"></div>
-        <div class="gallery-item reveal"><img src="images/gyro-rice.jpg" alt="Chicken shawarma over rice with white sauce and hot sauce" loading="lazy" decoding="async"></div>
-        <div class="gallery-item reveal wide"><img src="images/family-spread.jpg" alt="Family-style spread of grilled chicken, mixed kababs, and qabuli palow" loading="lazy" decoding="async"></div>
-        <div class="gallery-item reveal"><img src="images/combo-trays.jpg" alt="Three takeout trays with kabab, tikka, rice, and fresh salad" loading="lazy" decoding="async"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact / Hours -->
-  <section class="contact section" id="contact">
-    <div class="section-pattern" aria-hidden="true"></div>
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Visit Us</span>
-        <h2 class="section-title">Hours &amp; Location</h2>
-        <div class="divider"><span></span></div>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info reveal">
-          <h3>Contact</h3>
-          <ul class="contact-list">
-            <li>
-              <span class="icon" aria-hidden="true">&#9873;</span>
-              <a href="https://maps.google.com/?q=1947+Bath+Ave,+Brooklyn,+NY+11214" target="_blank" rel="noopener">
-                1947 Bath Ave, Brooklyn, NY 11214
-              </a>
-            </li>
-            <li>
-              <span class="icon" aria-hidden="true">&#9742;</span>
-              <a href="tel:+13473127777">(347) 312-7777</a>
-            </li>
-            <li>
-              <span class="icon" aria-hidden="true">&#128717;</span>
-              <span>Dine-in &#183; Curbside pickup &#183; No-contact delivery</span>
-            </li>
-          </ul>
-          <div class="cta-group">
-            <a href="https://maps.app.goo.gl/yQWxTRjSVfmVyHBS7" target="_blank" rel="noopener" class="btn btn-gold">Get Directions</a>
-            <a href="tel:+13473127777" class="btn btn-outline">Call Now</a>
-          </div>
-        </div>
-        <div class="hours reveal">
-          <h3>Hours</h3>
-          <ul class="hours-list">
-            <li><span>Monday</span><span>10:00 AM &#8211; 10:00 PM</span></li>
-            <li><span>Tuesday</span><span>10:00 AM &#8211; 10:00 PM</span></li>
-            <li><span>Wednesday</span><span>10:00 AM &#8211; 10:00 PM</span></li>
-            <li><span>Thursday</span><span>10:00 AM &#8211; 10:00 PM</span></li>
-            <li><span>Friday</span><span>10:00 AM &#8211; 11:00 PM</span></li>
-            <li><span>Saturday</span><span>10:00 AM &#8211; 11:00 PM</span></li>
-            <li><span>Sunday</span><span>11:00 AM &#8211; 10:00 PM</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#home" class="logo">
-            <span class="logo-icon" aria-hidden="true">&#x2666;</span>
-            <span class="logo-text">Khorasaan</span>
-          </a>
-          <p>Authentic Afghan halal cuisine in the heart of Brooklyn.</p>
-        </div>
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-contact">
-          <h4>Contact</h4>
-          <p>1947 Bath Ave, Brooklyn, NY 11214</p>
-          <p><a href="tel:+13473127777">(347) 312-7777</a></p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; <span id="year"></span> Khorasaan Kabab &amp; Gyro. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+        </div>`;
+    });
+    html += `</div></div>`;
+  }
+
+  container.innerHTML = html;
+  setTimeout(observeMenuCards, 50);
+}
+
+// ============ MENU INTERACTIONS ============
+// Category tabs
+document.querySelectorAll('.menu-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    currentCategory = tab.dataset.tab;
+    renderMenu();
+  });
+});
+
+// Filter toggle
+document.getElementById('filterToggle').addEventListener('click', () => {
+  const filters = document.getElementById('menuFilters');
+  filters.classList.toggle('active');
+  document.getElementById('filterToggle').classList.toggle('active');
+});
+
+// Filter pills
+document.querySelectorAll('.filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    currentFilter = pill.dataset.filter;
+    renderMenu();
+  });
+});
+
+// Search
+const searchInput = document.getElementById('menuSearchInput');
+const searchWrap = document.getElementById('menuSearch');
+const clearBtn = document.getElementById('clearSearch');
+searchInput.addEventListener('input', (e) => {
+  currentSearch = e.target.value;
+  searchWrap.classList.toggle('has-value', currentSearch.length > 0);
+  renderMenu();
+});
+clearBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  currentSearch = '';
+  searchWrap.classList.remove('has-value');
+  renderMenu();
+  searchInput.focus();
+});
+// ============ SCROLL REVEAL ============
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+// ============ MENU CARD STAGGER ============
+const cardObserver = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 50);
+      cardObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.05 });
+function observeMenuCards(){
+  document.querySelectorAll('.menu-card').forEach(card => {
+    card.classList.remove('visible');
+    cardObserver.observe(card);
+  });
+}
+
+// ============ SMOOTH SCROLL ============
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e){
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target){
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+// ============ INIT ============
+renderMenu();
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-

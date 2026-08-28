@@ -15,7 +15,12 @@ A single-page, mobile-first restaurant website for **Khorasaan Kabab & Gyro**, a
 
 The site is published via **GitHub Pages** at:
 
-- https://aba223tuk.github.io/khorasaan-kabab-gyro/
+- https://khorasaankabab.com/ &#8212; custom domain (set by the `CNAME` file in the repo root)
+- https://www.khorasaankabab.com/ &#8212; redirects to the apex
+- https://aba223tuk.github.io/khorasaan-kabab-gyro/ &#8212; default Pages URL, still works
+
+DNS is configured with four `A` records on the apex pointing at GitHub Pages
+(185.199.108-111.153) and a `CNAME` on `www` pointing at `aba223tuk.github.io`.
 
 ## Files
 
